@@ -1,0 +1,10 @@
+# Hide source code from GitHub UI
+backend/** linguist-vendored
+frontend/src/** linguist-vendored
+*.java linguist-vendored
+*.js linguist-vendored
+*.jsx linguist-vendored
+*.css linguist-vendored
+
+# Show README only
+README.md linguist-documentation
