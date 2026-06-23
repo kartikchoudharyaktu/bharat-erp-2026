@@ -1,10 +1,53 @@
-# Hide source code from GitHub UI
-backend/** linguist-vendored
-frontend/src/** linguist-vendored
+﻿# ============================================================
+# BHARAT ERP 2026 - Hide Source Code
+# ============================================================
+
+# ===== HIDE ALL SOURCE CODE =====
 *.java linguist-vendored
 *.js linguist-vendored
 *.jsx linguist-vendored
 *.css linguist-vendored
+*.json linguist-vendored
+*.xml linguist-vendored
+*.properties linguist-vendored
+*.yml linguist-vendored
+*.yaml linguist-vendored
+*.sql linguist-vendored
+*.sh linguist-vendored
 
-# Show README only
+# ===== HIDE BACKEND SOURCE =====
+backend/src/** linguist-vendored
+backend/src/main/java/** linguist-vendored
+backend/src/main/resources/** linguist-vendored
+
+# ===== HIDE FRONTEND SOURCE =====
+frontend/src/** linguist-vendored
+frontend/src/components/** linguist-vendored
+frontend/src/pages/** linguist-vendored
+frontend/src/services/** linguist-vendored
+frontend/src/store/** linguist-vendored
+frontend/src/utils/** linguist-vendored
+frontend/src/styles/** linguist-vendored
+frontend/src/App.jsx linguist-vendored
+frontend/src/index.jsx linguist-vendored
+frontend/src/index.js linguist-vendored
+
+# ===== HIDE CONFIG FILES =====
+pom.xml linguist-vendored
+package.json linguist-vendored
+package-lock.json linguist-vendored
+vite.config.js linguist-vendored
+tailwind.config.js linguist-vendored
+postcss.config.js linguist-vendored
+*.config.js linguist-vendored
+
+# ===== HIDE BACKUP FILES =====
+*.backup linguist-vendored
+*.backup-* linguist-vendored
+*.bak linguist-vendored
+
+# ===== SHOW ONLY THESE FILES =====
 README.md linguist-documentation
+LICENSE linguist-documentation
+.gitignore linguist-vendored
+.gitattributes linguist-vendored
