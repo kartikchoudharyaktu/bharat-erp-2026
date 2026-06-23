@@ -10,13 +10,15 @@ import {
 axios.defaults.baseURL = 'http://localhost:8080/api';
 
 // ============================================================
-// CREATOR DETAILS (No Phone, Professional)
+// CREATOR DETAILS
 // ============================================================
 const CREATOR = {
     name: 'Kartik Choudhary',
-    title: 'B.Tech CSE | AKTU',
-    location: 'Delhi NCR, India',
+    college: 'Raj Kumar Goel Institute of Technology, Ghaziabad',
+    university: 'Dr. A.P.J. Abdul Kalam Technical University (AKTU)',
+    location: 'Ghaziabad, UP, Delhi NCR (BHARAT "HINDUSTAAN")',
     email: 'kartikmzn7@gmail.com',
+    phone: '9457809806',
     linkedin: 'https://www.linkedin.com/in/kartik-choudharyaktu',
     github: 'https://github.com/kartikchoudharyaktu',
     instagram: 'https://instagram.com/kartik_choudhary_aktu',
@@ -24,12 +26,12 @@ const CREATOR = {
 };
 
 // ============================================================
-// 5 PAGES - 25 PHASES (Clean, No Duplicate Labels)
+// 5 PAGES - CATEGORY WISE (25 PHASES)
 // ============================================================
 const pages = [
     {
         id: 'page1',
-        name: 'Core Modules',
+        name: '📊 Core Modules',
         icon: '📊',
         tabs: [
             { id: 'dashboard', label: 'Dashboard', phase: 1 },
@@ -42,7 +44,7 @@ const pages = [
     },
     {
         id: 'page2',
-        name: 'Reports & Analytics',
+        name: '📈 Reports & Analytics',
         icon: '📈',
         tabs: [
             { id: 'sales-report', label: 'Sales Report', phase: 5 },
@@ -57,11 +59,11 @@ const pages = [
     },
     {
         id: 'page3',
-        name: 'AI & Intelligence',
-        icon: '🧠',
+        name: '🤖 AI & HR',
+        icon: '🤖',
         tabs: [
             { id: 'chat', label: 'AI Chat', phase: 6 },
-            { id: 'search', label: 'Smart Search', phase: 6 },
+            { id: 'search', label: 'AI Search', phase: 6 },
             { id: 'auto-invoice', label: 'Auto Invoice', phase: 6 },
             { id: 'anomaly', label: 'Anomaly Detection', phase: 6 },
             { id: 'predict', label: 'Predictions', phase: 6 },
@@ -74,48 +76,50 @@ const pages = [
     },
     {
         id: 'page4',
-        name: 'Manufacturing & Projects',
+        name: '🏭 Manufacturing & Projects',
         icon: '🏭',
         tabs: [
-            { id: 'mfg-bom', label: 'Bill of Materials', phase: 8 },
-            { id: 'mfg-production', label: 'Production Orders', phase: 8 },
+            { id: 'mfg-bom', label: 'BOM', phase: 8 },
+            { id: 'mfg-production', label: 'Production', phase: 8 },
             { id: 'projects', label: 'Projects', phase: 9 },
             { id: 'tasks', label: 'Tasks', phase: 9 },
             { id: 'timesheets', label: 'Timesheets', phase: 9 },
             { id: 'companies', label: 'Companies', phase: 10 },
             { id: 'budgets', label: 'Budgets', phase: 10 },
             { id: 'finance', label: 'Finance Advanced', phase: 11 },
-            { id: 'tax', label: 'Tax Compliance', phase: 11 },
+            { id: 'tax', label: 'Tax', phase: 11 },
             { id: 'inventory', label: 'Inventory', phase: 12 },
         ]
     },
     {
         id: 'page5',
-        name: 'Advanced & Security',
-        icon: '🔒',
+        name: '🔗 Advanced & Security',
+        icon: '🔗',
         tabs: [
             { id: 'scm-adv', label: 'SCM Advanced', phase: 19 },
             { id: 'mfg-complete', label: 'Mfg Complete', phase: 20 },
             { id: 'ai-enhanced', label: 'AI Enhanced', phase: 14 },
             { id: 'sales-adv', label: 'Sales Advanced', phase: 15 },
             { id: 'universal', label: 'Universal Access', phase: 16 },
-            { id: 'advanced', label: 'Advanced Features', phase: 17 },
+            { id: 'advanced', label: 'Advanced', phase: 17 },
             { id: 'hr-adv', label: 'HR Advanced', phase: 21 },
             { id: 'sales-complete', label: 'Sales Complete', phase: 22 },
             { id: 'innovation', label: 'Innovation', phase: 23 },
             { id: 'blockchain', label: 'Blockchain', phase: 24 },
-            { id: 'audit', label: 'Audit & Compliance', phase: 25 },
+            { id: 'audit', label: 'Audit', phase: 25 },
             { id: 'settings', label: 'Settings', phase: 1 },
         ]
     },
 ];
 
-const allTabs = pages.flatMap(p => p.tabs);
+// Get all tabs flat
+const allTabs = pages.flatMap(page => page.tabs);
 
 // ============================================================
 // MAIN APP
 // ============================================================
 function App() {
+    // ==================== STATE ====================
     const [activeTab, setActiveTab] = useState('dashboard');
     const [activePage, setActivePage] = useState('page1');
     const [loading, setLoading] = useState(false);
@@ -126,16 +130,22 @@ function App() {
     const [showModal, setShowModal] = useState(false);
     const [modalType, setModalType] = useState('');
 
+    // ==================== TIME UPDATE ====================
     useEffect(() => {
         const timer = setInterval(() => setCurrentTime(new Date()), 1000);
         return () => clearInterval(timer);
     }, []);
 
-    const formatDate = (d) => {
-        return d.toLocaleDateString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const formatDate = (date) => {
+        return date.toLocaleDateString('en-IN', {
+            day: '2-digit', month: '2-digit', year: 'numeric'
+        });
     };
-    const formatTime = (d) => {
-        return d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+    const formatTime = (date) => {
+        return date.toLocaleTimeString('en-IN', {
+            hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
     };
 
     const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
@@ -148,45 +158,42 @@ function App() {
         }
     };
 
-    // ============================================================
-    // ALL STATE (Phase 1-25)
-    // ============================================================
-    // Customers
+    // ==================== PHASE 2: CUSTOMERS ====================
     const [customers, setCustomers] = useState([]);
     const [customerForm, setCustomerForm] = useState({
         code: '', name: '', gstin: '', phone: '', email: '', address: '', city: '', state: '', creditLimit: 0
     });
     const [editingCustomerId, setEditingCustomerId] = useState(null);
 
-    // Products
+    // ==================== PHASE 2: PRODUCTS ====================
     const [products, setProducts] = useState([]);
     const [productForm, setProductForm] = useState({
         code: '', name: '', hsn: '', unit: '', gstRate: 18, purchasePrice: 0, sellingPrice: 0, stock: 0, minStock: 0
     });
     const [editingProductId, setEditingProductId] = useState(null);
 
-    // Vendors
+    // ==================== PHASE 4: VENDORS ====================
     const [vendors, setVendors] = useState([]);
     const [vendorForm, setVendorForm] = useState({
         code: '', name: '', gstin: '', phone: '', email: '', address: '', city: '', state: ''
     });
     const [editingVendorId, setEditingVendorId] = useState(null);
 
-    // Invoices
+    // ==================== PHASE 3: INVOICES ====================
     const [invoices, setInvoices] = useState([]);
     const [invoiceItems, setInvoiceItems] = useState([]);
     const [invoiceForm, setInvoiceForm] = useState({
         customerId: '', customerName: '', customerGstin: '', customerAddress: ''
     });
 
-    // Purchase Orders
+    // ==================== PHASE 4: PURCHASE ORDERS ====================
     const [purchaseOrders, setPurchaseOrders] = useState([]);
     const [poItems, setPoItems] = useState([]);
     const [poForm, setPoForm] = useState({
         vendorId: '', vendorName: '', vendorGstin: '', deliveryDate: ''
     });
 
-    // Reports
+    // ==================== PHASE 5: REPORTS ====================
     const [dashboardStats, setDashboardStats] = useState({});
     const [salesReport, setSalesReport] = useState({});
     const [purchaseReport, setPurchaseReport] = useState({});
@@ -197,7 +204,7 @@ function App() {
     const [trialBalance, setTrialBalance] = useState({});
     const [profitLoss, setProfitLoss] = useState({});
 
-    // AI
+    // ==================== PHASE 6: AI ====================
     const [chatMessages, setChatMessages] = useState([
         { sender: 'ai', text: '👋 Hello! I am your AI Assistant. Ask me anything!' }
     ]);
@@ -217,7 +224,7 @@ function App() {
     const [autoInvoiceResult, setAutoInvoiceResult] = useState(null);
     const [agentResults, setAgentResults] = useState([]);
 
-    // HR
+    // ==================== PHASE 7: HR ====================
     const [employees, setEmployees] = useState([]);
     const [employeeForm, setEmployeeForm] = useState({
         employeeId: '', firstName: '', lastName: '', email: '', phone: '',
@@ -232,7 +239,7 @@ function App() {
     });
     const [editingLeaveId, setEditingLeaveId] = useState(null);
 
-    // Manufacturing
+    // ==================== PHASE 8: MANUFACTURING ====================
     const [boms, setBoms] = useState([]);
     const [bomForm, setBomForm] = useState({
         productId: '', bomName: '', version: '1.0', status: 'ACTIVE'
@@ -245,7 +252,7 @@ function App() {
     });
     const [editingProductionId, setEditingProductionId] = useState(null);
 
-    // Projects
+    // ==================== PHASE 9: PROJECTS ====================
     const [projects, setProjects] = useState([]);
     const [projectForm, setProjectForm] = useState({
         projectName: '', projectCode: '', description: '',
@@ -267,7 +274,7 @@ function App() {
     });
     const [editingTimesheetId, setEditingTimesheetId] = useState(null);
 
-    // Multi-Company
+    // ==================== PHASE 10: MULTI-COMPANY ====================
     const [companies, setCompanies] = useState([]);
     const [companyForm, setCompanyForm] = useState({
         companyName: '', companyCode: '', gstNo: '', panNo: '',
@@ -282,9 +289,11 @@ function App() {
     });
     const [editingBudgetId, setEditingBudgetId] = useState(null);
 
-    // ============================================================
-    // FETCH FUNCTIONS
-    // ============================================================
+    // ==================== FETCH ALL DATA ====================
+    useEffect(() => {
+        fetchAllData();
+    }, []);
+
     const fetchAllData = async () => {
         await Promise.all([
             fetchCustomers(), fetchProducts(), fetchVendors(),
@@ -297,8 +306,6 @@ function App() {
             fetchCompanies(), fetchBudgets()
         ]);
     };
-
-    useEffect(() => { fetchAllData(); }, []);
 
     const fetchCustomers = async () => {
         try { const res = await axios.get('/customers'); setCustomers(Array.isArray(res.data) ? res.data : []); } catch (e) { setCustomers([]); }
@@ -370,9 +377,8 @@ function App() {
         try { const res = await axios.get('/budgets'); setBudgets(Array.isArray(res.data) ? res.data : []); } catch (e) { setBudgets([]); }
     };
 
-    // ============================================================
-    // CRUD FUNCTIONS (All modules - Real operations)
-    // ============================================================
+    // ==================== CRUD FUNCTIONS ====================
+    // Customers
     const handleCustomerSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -399,6 +405,7 @@ function App() {
         setEditingCustomerId(null);
     };
 
+    // Products
     const handleProductSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -425,6 +432,7 @@ function App() {
         setEditingProductId(null);
     };
 
+    // Vendors
     const handleVendorSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -451,6 +459,7 @@ function App() {
         setEditingVendorId(null);
     };
 
+    // Invoices
     const handleInvoiceSubmit = async (e) => {
         e.preventDefault();
         if (invoiceItems.length === 0) {
@@ -508,6 +517,7 @@ function App() {
         setInvoiceItems(invoiceItems.filter((_, i) => i !== index));
     };
 
+    // Purchase Orders
     const handlePOSubmit = async (e) => {
         e.preventDefault();
         if (poItems.length === 0) {
@@ -565,9 +575,7 @@ function App() {
         setPoItems(poItems.filter((_, i) => i !== index));
     };
 
-    // ============================================================
-    // AI FUNCTIONS
-    // ============================================================
+    // ==================== AI FUNCTIONS ====================
     const sendChat = async () => {
         if (!chatInput.trim()) return;
         setChatMessages([...chatMessages, { sender: 'user', text: chatInput }]);
@@ -686,9 +694,7 @@ function App() {
         setAutoInvoiceData({ ...autoInvoiceData, items: updated });
     };
 
-    // ============================================================
-    // HR FUNCTIONS
-    // ============================================================
+    // ==================== HR FUNCTIONS ====================
     const handleEmployeeSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -747,7 +753,7 @@ function App() {
         setEditingLeaveId(null);
     };
 
-    // Manufacturing
+    // ==================== MANUFACTURING FUNCTIONS ====================
     const handleBomSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -800,7 +806,7 @@ function App() {
         setEditingProductionId(null);
     };
 
-    // Projects
+    // ==================== PROJECT FUNCTIONS ====================
     const handleProjectSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -879,7 +885,7 @@ function App() {
         setEditingTimesheetId(null);
     };
 
-    // Companies
+    // ==================== COMPANY FUNCTIONS ====================
     const handleCompanySubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -932,9 +938,7 @@ function App() {
         setEditingBudgetId(null);
     };
 
-    // ============================================================
-    // EXPORT
-    // ============================================================
+    // ==================== EXPORT FUNCTIONS ====================
     const exportToCSV = (data, filename) => {
         if (!data || data.length === 0) {
             setMessage({ text: 'No data to export!', type: 'warning' });
@@ -961,12 +965,10 @@ function App() {
         setMessage({ text: 'Exported successfully!', type: 'success' });
     };
 
-    // ============================================================
-    // RENDER HELPERS
-    // ============================================================
+    // ==================== RENDER HELPERS ====================
     const renderReportCards = (title, value, color, icon) => (
         <div className="col-md-2 col-6 mb-2">
-            <div className={`card stat-card bg-${color} text-white`}>
+            <div className={`card bg-${color} text-white shadow-sm stat-card`}>
                 <div className="card-body text-center py-2">
                     <h3>{icon}</h3>
                     <h5>{typeof value === 'number' ? value.toLocaleString() : value}</h5>
@@ -1014,86 +1016,51 @@ function App() {
         );
     };
 
-    // ============================================================
-    // SIDEBAR (Apple + India Theme)
-    // ============================================================
+    // ==================== SIDEBAR ====================
     const Sidebar = () => (
-        <div className={`sidebar-container ${sidebarOpen ? 'open' : 'closed'}`}
-            style={{
-                width: sidebarOpen ? '260px' : '60px',
-                backgroundColor: isDarkMode ? 'rgba(30, 30, 30, 0.95)' : 'rgba(255, 255, 255, 0.92)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                borderRight: '1px solid rgba(255, 215, 0, 0.15)',
-                boxShadow: isDarkMode ? '0 0 30px rgba(0,0,0,0.5)' : '0 0 30px rgba(0,0,0,0.08)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                position: 'fixed',
-                top: '60px',
-                left: 0,
-                height: 'calc(100vh - 60px)',
-                zIndex: 1040,
-                overflow: 'hidden',
-                paddingTop: '10px'
-            }}
-        >
-            <div className="sidebar-scroll" style={{ overflowY: 'auto', height: '100%', padding: '0 8px' }}>
+        <div className={`position-fixed top-0 start-0 vh-100 bg-dark text-white transition-all duration-300 ease-in-out ${sidebarOpen ? 'width-250' : 'width-60'}`}
+            style={{ width: sidebarOpen ? '250px' : '60px', zIndex: 1040, paddingTop: '70px', overflow: 'hidden', boxShadow: '2px 0 15px rgba(0,0,0,0.3)' }}>
+            
+            <div className="d-flex flex-column h-100" style={{ overflowY: 'auto' }}>
+                {/* Page Navigation */}
                 {pages.map((page) => (
-                    <div key={page.id} className="sidebar-page-group" style={{ marginBottom: '4px' }}>
-                        <div
-                            className={`sidebar-page-header ${activePage === page.id ? 'active' : ''}`}
+                    <div key={page.id} className="page-group">
+                        <div 
+                            className={`page-header d-flex align-items-center px-3 py-2 cursor-pointer ${activePage === page.id ? 'bg-primary' : 'hover-bg-primary-20'}`}
                             onClick={() => changePage(page.id)}
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                padding: '10px 12px',
-                                borderRadius: '12px',
-                                cursor: 'pointer',
-                                backgroundColor: activePage === page.id ? 'rgba(255, 215, 0, 0.15)' : 'transparent',
-                                borderLeft: activePage === page.id ? '3px solid #FF9933' : '3px solid transparent',
-                                transition: 'all 0.2s ease'
+                            style={{ 
+                                backgroundColor: activePage === page.id ? '#0d6efd' : 'transparent',
+                                borderBottom: '1px solid rgba(255,255,255,0.1)',
+                                cursor: 'pointer'
                             }}
                         >
-                            <span style={{ fontSize: sidebarOpen ? '14px' : '12px', fontWeight: activePage === page.id ? '600' : '400' }}>
+                            <span style={{ fontSize: sidebarOpen ? '14px' : '12px', fontWeight: 'bold' }}>
                                 {page.icon} {sidebarOpen && page.name}
                             </span>
-                            {sidebarOpen && (
-                                <span style={{ fontSize: '10px', color: '#888' }}>
-                                    {activePage === page.id ? '●' : '○'}
-                                </span>
-                            )}
                         </div>
-
+                        
                         {activePage === page.id && (
-                            <div className="sidebar-page-items" style={{ paddingLeft: sidebarOpen ? '8px' : '0' }}>
+                            <div className="page-items">
                                 {page.tabs.map((tab) => (
                                     <button
                                         key={tab.id}
-                                        className={`sidebar-tab-btn ${activeTab === tab.id ? 'active' : ''}`}
+                                        className={`btn w-100 text-start border-0 rounded-0 py-2 px-3 ${activeTab === tab.id ? 'bg-primary text-white' : 'text-white-50 hover-bg-primary-20'} transition-all duration-200`}
                                         onClick={() => setActiveTab(tab.id)}
                                         style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            width: '100%',
-                                            padding: sidebarOpen ? '6px 12px' : '6px 8px',
-                                            margin: '2px 0',
-                                            borderRadius: '8px',
-                                            border: 'none',
-                                            background: activeTab === tab.id ? 'rgba(255, 215, 0, 0.12)' : 'transparent',
-                                            color: activeTab === tab.id ? '#FF9933' : (isDarkMode ? '#ccc' : '#555'),
+                                            backgroundColor: activeTab === tab.id ? '#0d6efd' : 'transparent',
                                             fontSize: sidebarOpen ? '12px' : '10px',
-                                            fontWeight: activeTab === tab.id ? '500' : '400',
-                                            cursor: 'pointer',
-                                            transition: 'all 0.15s ease',
                                             whiteSpace: 'normal',
                                             wordWrap: 'break-word',
                                             overflowWrap: 'break-word',
-                                            textAlign: 'left',
-                                            lineHeight: '1.3'
+                                            textOverflow: 'ellipsis',
+                                            maxWidth: '100%',
+                                            lineHeight: '1.2',
+                                            padding: '6px 12px',
+                                            margin: '1px 0',
                                         }}
                                     >
-                                        <span style={{ fontSize: '13px', width: '24px', flexShrink: 0 }}>{tab.label.split(' ')[0]}</span>
-                                        {sidebarOpen && <span style={{ fontSize: '12px' }}>{tab.label}</span>}
+                                        <span style={{ fontSize: '13px', display: 'inline-block', width: '24px' }}>{tab.label.split(' ')[0]}</span>
+                                        {sidebarOpen && <span className="ms-2" style={{ fontSize: '11px' }}>{tab.label}</span>}
                                     </button>
                                 ))}
                             </div>
@@ -1104,103 +1071,62 @@ function App() {
         </div>
     );
 
-    // ============================================================
-    // NAVBAR (Apple + India Theme)
-    // ============================================================
+    // ==================== NAVBAR ====================
     const Navbar = () => (
-        <nav style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '60px',
-            zIndex: 1050,
-            backgroundColor: isDarkMode ? 'rgba(20, 20, 20, 0.92)' : 'rgba(255, 255, 255, 0.92)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            borderBottom: '1px solid rgba(255, 215, 0, 0.15)',
-            display: 'flex',
-            alignItems: 'center',
-            padding: '0 20px',
-            boxShadow: isDarkMode ? '0 2px 20px rgba(0,0,0,0.3)' : '0 2px 20px rgba(0,0,0,0.06)'
-        }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
-                <button onClick={toggleSidebar} style={{
-                    background: 'none',
-                    border: 'none',
-                    fontSize: '20px',
-                    cursor: 'pointer',
-                    color: isDarkMode ? '#fff' : '#333',
-                    padding: '4px'
-                }}>☰</button>
-                <span style={{
-                    fontSize: '20px',
-                    fontWeight: '700',
-                    background: 'linear-gradient(135deg, #FF9933 0%, #138808 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                }}>🇮🇳 BHARAT ERP 2026</span>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <span style={{ fontSize: '13px', color: isDarkMode ? '#aaa' : '#666' }}>
-                    📅 {formatDate(currentTime)} | 🕐 {formatTime(currentTime)}
-                </span>
-                <button onClick={toggleDarkMode} style={{
-                    background: 'none',
-                    border: 'none',
-                    fontSize: '18px',
-                    cursor: 'pointer',
-                    color: isDarkMode ? '#FFD700' : '#333'
-                }}>{isDarkMode ? '☀️' : '🌙'}</button>
-                <a href={CREATOR.github} target="_blank" rel="noopener noreferrer" style={{ color: isDarkMode ? '#fff' : '#333', fontSize: '18px', textDecoration: 'none' }}>🐙</a>
+        <nav className="navbar navbar-dark bg-dark fixed-top shadow-lg" style={{ zIndex: 1050, height: '60px' }}>
+            <div className="container-fluid px-3">
+                <div className="d-flex align-items-center">
+                    <button className="btn btn-outline-light btn-sm me-2" onClick={toggleSidebar} style={{ border: 'none', fontSize: '20px' }}>☰</button>
+                    <span className="navbar-brand fw-bold text-warning" style={{ fontSize: '1.1rem' }}>🇮🇳 BHARAT ERP 2026</span>
+                </div>
+                <div className="text-center text-light d-none d-md-block">
+                    <span className="fw-bold">📅 {formatDate(currentTime)}</span>
+                    <span className="mx-2 text-warning">|</span>
+                    <span className="fw-bold text-warning">🕐 {formatTime(currentTime)}</span>
+                </div>
+                <div className="d-flex align-items-center">
+                    <span className="text-light me-2 d-none d-sm-block" style={{ fontSize: '12px' }}>👤 {CREATOR.name}</span>
+                    <button className="btn btn-outline-light btn-sm me-1" onClick={toggleDarkMode} style={{ border: 'none', fontSize: '16px' }}>
+                        {isDarkMode ? '☀️' : '🌙'}
+                    </button>
+                    <a href={CREATOR.github} target="_blank" rel="noopener noreferrer" className="text-light text-decoration-none">
+                        <span style={{ fontSize: '16px' }}>🐙</span>
+                    </a>
+                </div>
             </div>
         </nav>
     );
 
-    // ============================================================
-    // FOOTER
-    // ============================================================
+    // ==================== FOOTER ====================
     const Footer = () => (
-        <footer style={{
-            borderTop: '1px solid rgba(255, 215, 0, 0.12)',
-            padding: '16px 0',
-            marginTop: '20px',
-            backgroundColor: isDarkMode ? 'rgba(20, 20, 20, 0.6)' : 'rgba(250, 250, 250, 0.6)',
-            backdropFilter: 'blur(10px)'
-        }}>
+        <footer className="bg-dark text-white-50 py-3 mt-auto" style={{ borderTop: '1px solid #444' }}>
             <div className="container-fluid px-4">
                 <div className="row align-items-center">
                     <div className="col-md-4 text-center text-md-start">
-                        <small>🇮🇳 <strong style={{ color: '#FF9933' }}>BHARAT ERP 2026</strong></small>
-                        <br />
-                        <small style={{ color: isDarkMode ? '#aaa' : '#666' }}>Created by: <strong style={{ color: '#138808' }}>{CREATOR.name}</strong></small>
+                        <small>🇮🇳 <strong className="text-warning">BHARAT ERP 2026</strong></small><br />
+                        <small>Created by: <strong className="text-primary">{CREATOR.name}</strong></small>
                     </div>
                     <div className="col-md-4 text-center">
-                        <small style={{ color: isDarkMode ? '#aaa' : '#666' }}>📧 {CREATOR.email}</small>
-                        <br />
-                        <small style={{ color: isDarkMode ? '#888' : '#888' }}>📍 {CREATOR.location}</small>
+                        <small>📧 {CREATOR.email}</small><br />
+                        <small>📍 {CREATOR.location}</small>
                     </div>
                     <div className="col-md-4 text-center text-md-end">
-                        <a href={CREATOR.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: '#0a66c2', textDecoration: 'none', margin: '0 8px' }}>🔗 LinkedIn</a>
-                        <a href={CREATOR.github} target="_blank" rel="noopener noreferrer" style={{ color: isDarkMode ? '#fff' : '#333', textDecoration: 'none', margin: '0 8px' }}>🐙 GitHub</a>
-                        <a href={CREATOR.instagram} target="_blank" rel="noopener noreferrer" style={{ color: '#E4405F', textDecoration: 'none', margin: '0 8px' }}>📸 Instagram</a>
-                        <br />
-                        <small style={{ color: isDarkMode ? '#666' : '#aaa' }}>© 2026 BHARAT ERP | Made in India 🇮🇳</small>
+                        <a href={CREATOR.linkedin} target="_blank" rel="noopener noreferrer" className="text-info text-decoration-none me-2">🔗 LinkedIn</a>
+                        <a href={CREATOR.github} target="_blank" rel="noopener noreferrer" className="text-light text-decoration-none me-2">🐙 GitHub</a>
+                        <a href={CREATOR.instagram} target="_blank" rel="noopener noreferrer" className="text-danger text-decoration-none">📸 Instagram</a><br />
+                        <small className="text-muted">© 2026 BHARAT ERP | Made in India 🇮🇳</small>
                     </div>
                 </div>
             </div>
         </footer>
     );
 
-    // ============================================================
-    // RENDER CONTENT
-    // ============================================================
+    // ==================== RENDER CONTENT ====================
     const renderContent = () => {
         const currentTab = allTabs.find(t => t.id === activeTab);
         const tabLabel = currentTab ? currentTab.label : 'Dashboard';
 
-        // Dashboard
+        // DASHBOARD
         if (activeTab === 'dashboard') {
             return (
                 <div>
@@ -1214,8 +1140,8 @@ function App() {
                     </div>
                     <div className="row">
                         <div className="col-md-6">
-                            <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                                <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}>📈 Monthly Sales Trend</div>
+                            <div className="card shadow-sm">
+                                <div className="card-header bg-primary text-white">📈 Monthly Sales Trend</div>
                                 <div className="card-body" style={{ height: '300px' }}>
                                     <ResponsiveContainer width="100%" height="100%">
                                         <AreaChart data={dashboardStats.monthlySales || []}>
@@ -1230,8 +1156,8 @@ function App() {
                             </div>
                         </div>
                         <div className="col-md-6">
-                            <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                                <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}>📊 AI Summary</div>
+                            <div className="card shadow-sm">
+                                <div className="card-header bg-success text-white">📊 AI Summary</div>
                                 <div className="card-body">
                                     <div className="row text-center">
                                         <div className="col-4 border-end py-3"><h5>Agents</h5><h3 className="text-success">{agentResults.length || 0}</h3></div>
@@ -1246,13 +1172,13 @@ function App() {
             );
         }
 
-        // Customers
+        // CUSTOMERS
         if (activeTab === 'customers') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingCustomerId ? '✏️ Edit Customer' : '➕ Add Customer'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-primary text-white"><h5>{editingCustomerId ? '✏️ Edit Customer' : '➕ Add Customer'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleCustomerSubmit}>
                                     <div className="row g-2">
@@ -1275,8 +1201,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>👥 Customers List ({customers.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-primary text-white"><h5>👥 Customers List ({customers.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Code</th><th>Name</th><th>GSTIN</th><th>Phone</th><th>City</th><th>Actions</th></tr></thead>
@@ -1303,13 +1229,13 @@ function App() {
             );
         }
 
-        // Products
+        // PRODUCTS
         if (activeTab === 'products') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingProductId ? '✏️ Edit Product' : '➕ Add Product'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>{editingProductId ? '✏️ Edit Product' : '➕ Add Product'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleProductSubmit}>
                                     <div className="row g-2">
@@ -1332,8 +1258,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📦 Products List ({products.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>📦 Products List ({products.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Code</th><th>Name</th><th>HSN</th><th>GST%</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
@@ -1363,13 +1289,13 @@ function App() {
             );
         }
 
-        // Vendors
+        // VENDORS
         if (activeTab === 'vendors') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingVendorId ? '✏️ Edit Vendor' : '➕ Add Vendor'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>{editingVendorId ? '✏️ Edit Vendor' : '➕ Add Vendor'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleVendorSubmit}>
                                     <div className="row g-2">
@@ -1391,8 +1317,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>🏢 Vendors List ({vendors.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>🏢 Vendors List ({vendors.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Code</th><th>Name</th><th>GSTIN</th><th>Phone</th><th>City</th><th>Actions</th></tr></thead>
@@ -1419,13 +1345,13 @@ function App() {
             );
         }
 
-        // Invoices
+        // INVOICES
         if (activeTab === 'invoices') {
             return (
                 <div>
                     <button className="btn btn-primary mb-3" onClick={() => { resetInvoiceForm(); setShowModal(true); setModalType('invoice'); }}>➕ Create Invoice</button>
-                    <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                        <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📄 Invoices List ({invoices.length})</h5></div>
+                    <div className="card shadow-sm">
+                        <div className="card-header bg-primary text-white"><h5>📄 Invoices List ({invoices.length})</h5></div>
                         <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                             <table className="table table-striped">
                                 <thead><tr><th>Number</th><th>Date</th><th>Customer</th><th>Total</th><th>GST</th><th>Grand Total</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1450,13 +1376,13 @@ function App() {
             );
         }
 
-        // Purchase Orders
+        // PURCHASE ORDERS
         if (activeTab === 'purchase-orders') {
             return (
                 <div>
                     <button className="btn btn-success mb-3" onClick={() => { resetPOForm(); setShowModal(true); setModalType('po'); }}>➕ Create Purchase Order</button>
-                    <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                        <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📋 Purchase Orders List ({purchaseOrders.length})</h5></div>
+                    <div className="card shadow-sm">
+                        <div className="card-header bg-success text-white"><h5>📋 Purchase Orders List ({purchaseOrders.length})</h5></div>
                         <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                             <table className="table table-striped">
                                 <thead><tr><th>PO No</th><th>Date</th><th>Vendor</th><th>Total</th><th>GST</th><th>Grand Total</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1481,11 +1407,11 @@ function App() {
             );
         }
 
-        // Reports
+        // REPORTS
         if (['sales-report', 'purchase-report', 'stock-report', 'gst-report', 'customer-report', 'vendor-report', 'trial-balance', 'profit-loss'].includes(activeTab)) {
             return (
-                <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                    <div className="card-header bg-primary text-white d-flex justify-content-between align-items-center" style={{ borderRadius: '16px 16px 0 0' }}>
+                <div className="card shadow-sm">
+                    <div className="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                         <h5>📊 {tabLabel}</h5>
                         <button className="btn btn-light btn-sm" onClick={() => setMessage({ text: 'Export feature available!', type: 'success' })}>📊 Export</button>
                     </div>
@@ -1503,8 +1429,8 @@ function App() {
         // AI Features
         if (['chat', 'search', 'auto-invoice', 'anomaly', 'predict', 'qr', 'extract', 'agents'].includes(activeTab)) {
             return (
-                <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                    <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>🤖 {tabLabel}</h5></div>
+                <div className="card shadow-sm">
+                    <div className="card-header bg-primary text-white"><h5>🤖 {tabLabel}</h5></div>
                     <div className="card-body">
                         <div className="text-center text-muted py-5">
                             <h5>🧠 AI Features Ready</h5>
@@ -1521,8 +1447,8 @@ function App() {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-info text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingEmployeeId ? '✏️ Edit Employee' : '➕ Add Employee'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-info text-white"><h5>{editingEmployeeId ? '✏️ Edit Employee' : '➕ Add Employee'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleEmployeeSubmit}>
                                     <div className="row g-2">
@@ -1561,8 +1487,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-info text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>👨‍💼 Employees List ({employees.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-info text-white"><h5>👨‍💼 Employees List ({employees.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Department</th><th>Designation</th><th>Salary</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1596,8 +1522,8 @@ function App() {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingLeaveId ? '✏️ Edit Leave' : '➕ Add Leave'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>{editingLeaveId ? '✏️ Edit Leave' : '➕ Add Leave'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleLeaveSubmit}>
                                     <div className="row g-2">
@@ -1628,8 +1554,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>📅 Leaves List ({leaves.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>📅 Leaves List ({leaves.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Employee</th><th>Type</th><th>Start</th><th>End</th><th>Days</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1659,13 +1585,13 @@ function App() {
             );
         }
 
-        // Manufacturing - BOM
+        // MANUFACTURING - BOM
         if (activeTab === 'mfg-bom') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingBomId ? '✏️ Edit BOM' : '➕ Add BOM'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>{editingBomId ? '✏️ Edit BOM' : '➕ Add BOM'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleBomSubmit}>
                                     <div className="row g-2">
@@ -1694,8 +1620,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📋 BOM List ({boms.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>📋 BOM List ({boms.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Product</th><th>BOM Name</th><th>Version</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1721,13 +1647,13 @@ function App() {
             );
         }
 
-        // Manufacturing - Production
+        // MANUFACTURING - PRODUCTION
         if (activeTab === 'mfg-production') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-danger text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingProductionId ? '✏️ Edit Production' : '➕ Add Production Order'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-danger text-white"><h5>{editingProductionId ? '✏️ Edit Production' : '➕ Add Production Order'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleProductionSubmit}>
                                     <div className="row g-2">
@@ -1766,8 +1692,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-danger text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>🏭 Production Orders ({productionOrders.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-danger text-white"><h5>🏭 Production Orders ({productionOrders.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Product</th><th>Qty</th><th>Start</th><th>End</th><th>Status</th><th>Priority</th><th>Actions</th></tr></thead>
@@ -1795,13 +1721,13 @@ function App() {
             );
         }
 
-        // Projects
+        // PROJECTS
         if (activeTab === 'projects') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingProjectId ? '✏️ Edit Project' : '➕ Add Project'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-primary text-white"><h5>{editingProjectId ? '✏️ Edit Project' : '➕ Add Project'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleProjectSubmit}>
                                     <div className="row g-2">
@@ -1836,8 +1762,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📊 Projects List ({projects.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-primary text-white"><h5>📊 Projects List ({projects.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Code</th><th>Name</th><th>Client</th><th>Budget</th><th>Status</th><th>Priority</th><th>Actions</th></tr></thead>
@@ -1865,13 +1791,13 @@ function App() {
             );
         }
 
-        // Tasks
+        // TASKS
         if (activeTab === 'tasks') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingTaskId ? '✏️ Edit Task' : '➕ Add Task'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>{editingTaskId ? '✏️ Edit Task' : '➕ Add Task'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleTaskSubmit}>
                                     <div className="row g-2">
@@ -1908,8 +1834,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>✅ Tasks List ({tasks.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>✅ Tasks List ({tasks.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Task</th><th>Project</th><th>Assigned To</th><th>Due Date</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1936,13 +1862,13 @@ function App() {
             );
         }
 
-        // Timesheets
+        // TIMESHEETS
         if (activeTab === 'timesheets') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-info text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingTimesheetId ? '✏️ Edit Timesheet' : '➕ Add Timesheet'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-info text-white"><h5>{editingTimesheetId ? '✏️ Edit Timesheet' : '➕ Add Timesheet'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleTimesheetSubmit}>
                                     <div className="row g-2">
@@ -1971,8 +1897,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-info text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>⏱️ Timesheets ({timesheets.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-info text-white"><h5>⏱️ Timesheets ({timesheets.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Employee</th><th>Task</th><th>Date</th><th>Hours</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1999,13 +1925,13 @@ function App() {
             );
         }
 
-        // Companies
+        // COMPANIES
         if (activeTab === 'companies') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-dark text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingCompanyId ? '✏️ Edit Company' : '➕ Add Company'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-dark text-white"><h5>{editingCompanyId ? '✏️ Edit Company' : '➕ Add Company'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleCompanySubmit}>
                                     <div className="row g-2">
@@ -2043,8 +1969,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-dark text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>🏢 Companies ({companies.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-dark text-white"><h5>🏢 Companies ({companies.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Code</th><th>Name</th><th>GST</th><th>City</th><th>Currency</th><th>Status</th><th>Actions</th></tr></thead>
@@ -2072,13 +1998,13 @@ function App() {
             );
         }
 
-        // Budgets
+        // BUDGETS
         if (activeTab === 'budgets') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingBudgetId ? '✏️ Edit Budget' : '➕ Add Budget'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>{editingBudgetId ? '✏️ Edit Budget' : '➕ Add Budget'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleBudgetSubmit}>
                                     <div className="row g-2">
@@ -2118,8 +2044,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>💰 Budgets ({budgets.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>💰 Budgets ({budgets.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Name</th><th>Company</th><th>Category</th><th>Amount</th><th>Fiscal Year</th><th>Status</th><th>Actions</th></tr></thead>
@@ -2147,10 +2073,10 @@ function App() {
             );
         }
 
-        // Default
+        // Default fallback
         return (
-            <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📋 {tabLabel}</h5></div>
+            <div className="card shadow-sm">
+                <div className="card-header bg-primary text-white"><h5>📋 {tabLabel}</h5></div>
                 <div className="card-body">
                     <div className="text-center py-5">
                         <h4>🚀 Module Ready: {tabLabel}</h4>
@@ -2163,44 +2089,36 @@ function App() {
         );
     };
 
-    // ============================================================
-    // MAIN RETURN
-    // ============================================================
+    // ==================== MAIN RETURN ====================
     return (
-        <div style={{
-            minHeight: '100vh',
-            backgroundColor: isDarkMode ? '#0a0a0a' : '#f5f5f7',
-            color: isDarkMode ? '#f5f5f7' : '#1d1d1f',
-            fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-        }}>
+        <div style={{ minHeight: '100vh', backgroundColor: isDarkMode ? '#1a1a2e' : '#f4f6f9' }}>
             <Navbar />
             <Sidebar />
 
             <main style={{
-                marginLeft: sidebarOpen ? '260px' : '60px',
-                paddingTop: '80px',
-                paddingLeft: '20px',
-                paddingRight: '20px',
-                paddingBottom: '20px',
-                minHeight: 'calc(100vh - 60px)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                marginLeft: sidebarOpen ? '250px' : '60px',
+                paddingTop: '60px',
+                minHeight: '100vh',
+                transition: 'all 0.3s ease-in-out'
             }}>
-                {message.text && (
-                    <div className={`alert alert-${message.type} alert-dismissible`} style={{ borderRadius: '12px', border: 'none' }}>
-                        {message.text}
-                        <button className="btn-close" onClick={() => setMessage({ text: '', type: '' })}></button>
-                    </div>
-                )}
-                {renderContent()}
+                <div className="container-fluid p-4" style={{ color: isDarkMode ? '#ffffff' : '#212529' }}>
+                    {message.text && (
+                        <div className={`alert alert-${message.type} alert-dismissible`}>
+                            {message.text}
+                            <button className="btn-close" onClick={() => setMessage({ text: '', type: '' })}></button>
+                        </div>
+                    )}
+                    {renderContent()}
+                </div>
                 <Footer />
             </main>
 
             {/* ===== MODAL ===== */}
             {showModal && (
-                <div className="modal show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}>
+                <div className="modal show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
                     <div className="modal-dialog modal-lg modal-dialog-scrollable">
-                        <div className="modal-content" style={{ borderRadius: '20px', border: 'none' }}>
-                            <div className="modal-header" style={{ borderBottom: '1px solid rgba(255,215,0,0.2)' }}>
+                        <div className="modal-content">
+                            <div className="modal-header">
                                 <h5>{modalType === 'invoice' ? '📄 Create Invoice' : '📋 Create Purchase Order'}</h5>
                                 <button className="btn-close" onClick={() => setShowModal(false)}></button>
                             </div>
@@ -2295,143 +2213,21 @@ function App() {
             )}
 
             <style>{`
-                /* Apple-Inspired Global Styles */
-                * {
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
-                }
-                
-                .stat-card {
-                    border-radius: 16px !important;
-                    border: none !important;
-                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                    backdrop-filter: blur(10px);
-                }
-                .stat-card:hover {
-                    transform: translateY(-4px);
-                    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-                }
-                
-                .card {
-                    border-radius: 16px !important;
-                    border: 1px solid rgba(255,215,0,0.08) !important;
-                    backdrop-filter: blur(10px);
-                    background: rgba(255,255,255,0.6);
-                    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-                    transition: all 0.3s ease;
-                }
-                .card:hover {
-                    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-                }
-                
-                .sidebar-tab-btn {
-                    transition: all 0.15s ease;
-                    border-radius: 8px;
-                }
-                .sidebar-tab-btn:hover {
-                    background: rgba(255,215,0,0.08) !important;
-                }
-                .sidebar-tab-btn.active {
-                    background: rgba(255,215,0,0.12) !important;
-                    color: #FF9933 !important;
-                }
-                
-                .sidebar-scroll::-webkit-scrollbar {
-                    width: 4px;
-                }
-                .sidebar-scroll::-webkit-scrollbar-track {
-                    background: transparent;
-                }
-                .sidebar-scroll::-webkit-scrollbar-thumb {
-                    background: rgba(255,215,0,0.3);
-                    border-radius: 4px;
-                }
-                
-                .form-control, .form-select {
-                    border-radius: 12px !important;
-                    border: 1px solid rgba(0,0,0,0.08) !important;
-                    padding: 10px 14px !important;
-                    transition: all 0.2s ease;
-                }
-                .form-control:focus, .form-select:focus {
-                    border-color: #FF9933 !important;
-                    box-shadow: 0 0 0 3px rgba(255,153,51,0.15) !important;
-                }
-                
-                .btn {
-                    border-radius: 12px !important;
-                    padding: 8px 20px !important;
-                    font-weight: 500 !important;
-                    transition: all 0.3s ease;
-                }
-                .btn-primary {
-                    background: linear-gradient(135deg, #FF9933 0%, #FF6B00 100%) !important;
-                    border: none !important;
-                }
-                .btn-primary:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 25px rgba(255,153,51,0.35);
-                }
-                .btn-success {
-                    background: linear-gradient(135deg, #138808 0%, #00A859 100%) !important;
-                    border: none !important;
-                }
-                .btn-success:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 25px rgba(19,136,8,0.35);
-                }
-                
-                .badge {
-                    border-radius: 20px !important;
-                    padding: 4px 12px !important;
-                    font-weight: 500 !important;
-                }
-                
-                .table {
-                    border-radius: 12px !important;
-                    overflow: hidden;
-                }
-                .table thead th {
-                    background: rgba(255,215,0,0.06) !important;
-                    border-bottom: 2px solid rgba(255,215,0,0.15) !important;
-                }
-                
-                .alert {
-                    border-radius: 12px !important;
-                    border: none !important;
-                }
-                
-                .bg-primary { background: linear-gradient(135deg, #FF9933, #FF6B00) !important; }
-                .bg-success { background: linear-gradient(135deg, #138808, #00A859) !important; }
-                .bg-info { background: linear-gradient(135deg, #2196F3, #1976D2) !important; }
-                .bg-warning { background: linear-gradient(135deg, #FFC107, #FFA000) !important; }
-                .bg-danger { background: linear-gradient(135deg, #FF1744, #D50000) !important; }
-                .bg-secondary { background: linear-gradient(135deg, #78909C, #546E7A) !important; }
-                .bg-dark { background: linear-gradient(135deg, #263238, #1a1a2e) !important; }
-                
-                .text-warning { color: #FF9933 !important; }
-                .text-primary { color: #FF6B00 !important; }
-                .text-success { color: #138808 !important; }
-                
-                .modal-content {
-                    border-radius: 20px !important;
-                    border: none !important;
-                    backdrop-filter: blur(20px);
-                    background: rgba(255,255,255,0.95);
-                }
-                
-                @media (max-width: 768px) {
-                    .sidebar-container {
-                        width: 60px !important;
-                    }
-                    .sidebar-container.open {
-                        width: 240px !important;
-                    }
-                    main {
-                        margin-left: 60px !important;
-                        padding: 10px !important;
-                    }
-                }
+                .width-250 { width: 250px; }
+                .width-60 { width: 60px; }
+                .hover-bg-primary-20:hover { background-color: rgba(13, 110, 253, 0.2); }
+                .transition-all { transition: all 0.3s ease-in-out; }
+                .btn:focus { box-shadow: none; }
+                .stat-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); transition: all 0.3s ease-in-out; }
+                .page-group { border-bottom: 1px solid rgba(255,255,255,0.08); }
+                .page-header { min-height: 40px; font-weight: bold; }
+                .page-items { padding: 2px 0; }
+                .page-items button { padding: 5px 12px; font-size: 11px; margin: 1px 0; }
+                ::-webkit-scrollbar { width: 4px; }
+                ::-webkit-scrollbar-track { background: #1a1a2e; }
+                ::-webkit-scrollbar-thumb { background: #0d6efd; border-radius: 4px; }
+                .bg-primary { background: #0d6efd !important; }
+                .text-warning { color: #ffc107 !important; }
             `}</style>
         </div>
     );

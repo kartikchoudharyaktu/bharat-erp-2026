@@ -10,183 +10,362 @@ import {
 axios.defaults.baseURL = 'http://localhost:8080/api';
 
 // ============================================================
-// CREATOR DETAILS (No Phone, Professional)
+// CREATOR DETAILS
 // ============================================================
 const CREATOR = {
-    name: 'Kartik Choudhary',
-    title: 'B.Tech CSE | AKTU',
-    location: 'Delhi NCR, India',
-    email: 'kartikmzn7@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/kartik-choudharyaktu',
-    github: 'https://github.com/kartikchoudharyaktu',
-    instagram: 'https://instagram.com/kartik_choudhary_aktu',
-    gstin: '09ABCDE1234F1Z5'
+  name: 'Kartik Choudhary',
+  college: 'Raj Kumar Goel Institute of Technology, Ghaziabad',
+  university: 'Dr. A.P.J. Abdul Kalam Technical University (AKTU)',
+  location: 'Ghaziabad, UP, Delhi NCR (BHARAT "HINDUSTAAN")',
+  email: 'kartikmzn7@gmail.com',
+  phone: '9457809806',
+  linkedin: 'https://www.linkedin.com/in/kartik-choudharyaktu',
+  github: 'https://github.com/kartikchoudharyaktu',
+  instagram: 'https://instagram.com/kartik_choudhary_aktu',
+  gstin: '09ABCDE1234F1Z5'
 };
 
 // ============================================================
-// 5 PAGES - 25 PHASES (Clean, No Duplicate Labels)
+// TABS FOR SIDEBARS
 // ============================================================
-const pages = [
-    {
-        id: 'page1',
-        name: 'Core Modules',
-        icon: '📊',
-        tabs: [
-            { id: 'dashboard', label: 'Dashboard', phase: 1 },
-            { id: 'customers', label: 'Customers', phase: 2 },
-            { id: 'products', label: 'Products', phase: 2 },
-            { id: 'vendors', label: 'Vendors', phase: 4 },
-            { id: 'invoices', label: 'Invoices', phase: 3 },
-            { id: 'purchase-orders', label: 'Purchase Orders', phase: 4 },
-        ]
-    },
-    {
-        id: 'page2',
-        name: 'Reports & Analytics',
-        icon: '📈',
-        tabs: [
-            { id: 'sales-report', label: 'Sales Report', phase: 5 },
-            { id: 'purchase-report', label: 'Purchase Report', phase: 5 },
-            { id: 'stock-report', label: 'Stock Report', phase: 5 },
-            { id: 'gst-report', label: 'GST Report', phase: 5 },
-            { id: 'customer-report', label: 'Customer Report', phase: 5 },
-            { id: 'vendor-report', label: 'Vendor Report', phase: 5 },
-            { id: 'trial-balance', label: 'Trial Balance', phase: 5 },
-            { id: 'profit-loss', label: 'Profit & Loss', phase: 5 },
-        ]
-    },
-    {
-        id: 'page3',
-        name: 'AI & Intelligence',
-        icon: '🧠',
-        tabs: [
-            { id: 'chat', label: 'AI Chat', phase: 6 },
-            { id: 'search', label: 'Smart Search', phase: 6 },
-            { id: 'auto-invoice', label: 'Auto Invoice', phase: 6 },
-            { id: 'anomaly', label: 'Anomaly Detection', phase: 6 },
-            { id: 'predict', label: 'Predictions', phase: 6 },
-            { id: 'qr', label: 'QR Scanner', phase: 6 },
-            { id: 'extract', label: 'Data Extraction', phase: 6 },
-            { id: 'agents', label: 'AI Agents', phase: 6 },
-            { id: 'hr-employees', label: 'Employees', phase: 7 },
-            { id: 'hr-leaves', label: 'Leaves', phase: 7 },
-        ]
-    },
-    {
-        id: 'page4',
-        name: 'Manufacturing & Projects',
-        icon: '🏭',
-        tabs: [
-            { id: 'mfg-bom', label: 'Bill of Materials', phase: 8 },
-            { id: 'mfg-production', label: 'Production Orders', phase: 8 },
-            { id: 'projects', label: 'Projects', phase: 9 },
-            { id: 'tasks', label: 'Tasks', phase: 9 },
-            { id: 'timesheets', label: 'Timesheets', phase: 9 },
-            { id: 'companies', label: 'Companies', phase: 10 },
-            { id: 'budgets', label: 'Budgets', phase: 10 },
-            { id: 'finance', label: 'Finance Advanced', phase: 11 },
-            { id: 'tax', label: 'Tax Compliance', phase: 11 },
-            { id: 'inventory', label: 'Inventory', phase: 12 },
-        ]
-    },
-    {
-        id: 'page5',
-        name: 'Advanced & Security',
-        icon: '🔒',
-        tabs: [
-            { id: 'scm-adv', label: 'SCM Advanced', phase: 19 },
-            { id: 'mfg-complete', label: 'Mfg Complete', phase: 20 },
-            { id: 'ai-enhanced', label: 'AI Enhanced', phase: 14 },
-            { id: 'sales-adv', label: 'Sales Advanced', phase: 15 },
-            { id: 'universal', label: 'Universal Access', phase: 16 },
-            { id: 'advanced', label: 'Advanced Features', phase: 17 },
-            { id: 'hr-adv', label: 'HR Advanced', phase: 21 },
-            { id: 'sales-complete', label: 'Sales Complete', phase: 22 },
-            { id: 'innovation', label: 'Innovation', phase: 23 },
-            { id: 'blockchain', label: 'Blockchain', phase: 24 },
-            { id: 'audit', label: 'Audit & Compliance', phase: 25 },
-            { id: 'settings', label: 'Settings', phase: 1 },
-        ]
-    },
+const leftTabs = [
+  { id: 'dashboard', label: 'Dashboard', icon: '📊' },
+  { id: 'customers', label: 'Customers', icon: '👥' },
+  { id: 'products', label: 'Products', icon: '📦' },
+  { id: 'vendors', label: 'Vendors', icon: '🏢' },
+  { id: 'invoices', label: 'Invoices', icon: '📄' },
+  { id: 'purchase-orders', label: 'Purchase Orders', icon: '📋' },
 ];
 
-const allTabs = pages.flatMap(p => p.tabs);
+const rightTabs = [
+  { id: 'hr-employees', label: 'HR Management', icon: '👨‍💼' },
+  { id: 'hr-leaves', label: 'Leaves', icon: '📅' },
+  { id: 'mfg-bom', label: 'BOM', icon: '📋' },
+  { id: 'mfg-production', label: 'Production', icon: '🏭' },
+  { id: 'projects', label: 'Projects', icon: '📊' },
+  { id: 'tasks', label: 'Tasks', icon: '✅' },
+  { id: 'timesheets', label: 'Timesheets', icon: '⏱️' },
+  { id: 'companies', label: 'Companies', icon: '🏢' },
+  { id: 'budgets', label: 'Budgets', icon: '💰' },
+  { id: 'sales-report', label: 'Sales Report', icon: '📈' },
+  { id: 'purchase-report', label: 'Purchase Report', icon: '📉' },
+  { id: 'stock-report', label: 'Stock Report', icon: '📦' },
+  { id: 'gst-report', label: 'GST Report', icon: '🧾' },
+  { id: 'customer-report', label: 'Customer Report', icon: '👥' },
+  { id: 'vendor-report', label: 'Vendor Report', icon: '🏢' },
+  { id: 'trial-balance', label: 'Trial Balance', icon: '⚖️' },
+  { id: 'profit-loss', label: 'P&L', icon: '💰' },
+  { id: 'chat', label: 'AI Chat', icon: '💬' },
+  { id: 'search', label: 'AI Search', icon: '🔍' },
+  { id: 'auto-invoice', label: 'Auto Invoice', icon: '⚡' },
+  { id: 'anomaly', label: 'Anomaly', icon: '🛡️' },
+  { id: 'predict', label: 'Predict', icon: '📊' },
+  { id: 'qr', label: 'QR Scanner', icon: '📱' },
+  { id: 'extract', label: 'Extract', icon: '📄' },
+  { id: 'agents', label: 'AI Agents', icon: '🤖' },
+  { id: 'settings', label: 'Settings', icon: '⚙️' },
+];
 
-// ============================================================
-// MAIN APP
-// ============================================================
 function App() {
+    // ==================== STATE ====================
     const [activeTab, setActiveTab] = useState('dashboard');
-    const [activePage, setActivePage] = useState('page1');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState({ text: '', type: '' });
     const [isDarkMode, setIsDarkMode] = useState(false);
-    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [leftOpen, setLeftOpen] = useState(true);
+    const [rightOpen, setRightOpen] = useState(true);
     const [currentTime, setCurrentTime] = useState(new Date());
     const [showModal, setShowModal] = useState(false);
     const [modalType, setModalType] = useState('');
 
+    // ==================== TIME UPDATE ====================
     useEffect(() => {
         const timer = setInterval(() => setCurrentTime(new Date()), 1000);
         return () => clearInterval(timer);
     }, []);
 
-    const formatDate = (d) => {
-        return d.toLocaleDateString('en-IN', { day: '2-digit', month: '2-digit', year: 'numeric' });
-    };
-    const formatTime = (d) => {
-        return d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    };
-
-    const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
-    const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
-    const changePage = (pageId) => {
-        setActivePage(pageId);
-        const page = pages.find(p => p.id === pageId);
-        if (page && page.tabs.length > 0) {
-            setActiveTab(page.tabs[0].id);
-        }
+    const formatDate = (date) => {
+        return date.toLocaleDateString('en-IN', { 
+            day: '2-digit', month: '2-digit', year: 'numeric' 
+        });
     };
 
-    // ============================================================
-    // ALL STATE (Phase 1-25)
-    // ============================================================
-    // Customers
+    const formatTime = (date) => {
+        return date.toLocaleTimeString('en-IN', { 
+            hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
+    };
+
+    const toggleLeft = () => setLeftOpen(!leftOpen);
+    const toggleRight = () => setRightOpen(!rightOpen);
+
+    // ==================== PHASE 2: CUSTOMERS ====================
     const [customers, setCustomers] = useState([]);
     const [customerForm, setCustomerForm] = useState({
         code: '', name: '', gstin: '', phone: '', email: '', address: '', city: '', state: '', creditLimit: 0
     });
     const [editingCustomerId, setEditingCustomerId] = useState(null);
 
-    // Products
+    const fetchCustomers = async () => {
+        try { const res = await axios.get('/customers'); setCustomers(Array.isArray(res.data) ? res.data : []); } catch (e) { setCustomers([]); }
+    };
+
+    const handleCustomerSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            if (editingCustomerId) {
+                await axios.put(`/customers/${editingCustomerId}`, customerForm);
+                setMessage({ text: 'Customer updated!', type: 'success' });
+            } else {
+                await axios.post('/customers', customerForm);
+                setMessage({ text: 'Customer added!', type: 'success' });
+            }
+            resetCustomerForm();
+            fetchCustomers();
+            fetchAllData();
+        } catch (error) {
+            setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
+        } finally { setLoading(false); }
+    };
+
+    const deleteCustomer = async (id) => {
+        if (!window.confirm('Delete this customer?')) return;
+        try { await axios.delete(`/customers/${id}`); setMessage({ text: 'Customer deleted!', type: 'success' }); fetchCustomers(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+    };
+
+    const resetCustomerForm = () => {
+        setCustomerForm({ code: '', name: '', gstin: '', phone: '', email: '', address: '', city: '', state: '', creditLimit: 0 });
+        setEditingCustomerId(null);
+    };
+
+    // ==================== PHASE 2: PRODUCTS ====================
     const [products, setProducts] = useState([]);
     const [productForm, setProductForm] = useState({
         code: '', name: '', hsn: '', unit: '', gstRate: 18, purchasePrice: 0, sellingPrice: 0, stock: 0, minStock: 0
     });
     const [editingProductId, setEditingProductId] = useState(null);
 
-    // Vendors
+    const fetchProducts = async () => {
+        try { const res = await axios.get('/products'); setProducts(Array.isArray(res.data) ? res.data : []); } catch (e) { setProducts([]); }
+    };
+
+    const handleProductSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            if (editingProductId) {
+                await axios.put(`/products/${editingProductId}`, productForm);
+                setMessage({ text: 'Product updated!', type: 'success' });
+            } else {
+                await axios.post('/products', productForm);
+                setMessage({ text: 'Product added!', type: 'success' });
+            }
+            resetProductForm();
+            fetchProducts();
+            fetchAllData();
+        } catch (error) {
+            setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
+        } finally { setLoading(false); }
+    };
+
+    const deleteProduct = async (id) => {
+        if (!window.confirm('Delete this product?')) return;
+        try { await axios.delete(`/products/${id}`); setMessage({ text: 'Product deleted!', type: 'success' }); fetchProducts(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+    };
+
+    const resetProductForm = () => {
+        setProductForm({ code: '', name: '', hsn: '', unit: '', gstRate: 18, purchasePrice: 0, sellingPrice: 0, stock: 0, minStock: 0 });
+        setEditingProductId(null);
+    };
+
+    // ==================== PHASE 4: VENDORS ====================
     const [vendors, setVendors] = useState([]);
     const [vendorForm, setVendorForm] = useState({
         code: '', name: '', gstin: '', phone: '', email: '', address: '', city: '', state: ''
     });
     const [editingVendorId, setEditingVendorId] = useState(null);
 
-    // Invoices
+    const fetchVendors = async () => {
+        try { const res = await axios.get('/vendors'); setVendors(Array.isArray(res.data) ? res.data : []); } catch (e) { setVendors([]); }
+    };
+
+    const handleVendorSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            if (editingVendorId) {
+                await axios.put(`/vendors/${editingVendorId}`, vendorForm);
+                setMessage({ text: 'Vendor updated!', type: 'success' });
+            } else {
+                await axios.post('/vendors', vendorForm);
+                setMessage({ text: 'Vendor added!', type: 'success' });
+            }
+            resetVendorForm();
+            fetchVendors();
+            fetchAllData();
+        } catch (error) {
+            setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
+        } finally { setLoading(false); }
+    };
+
+    const deleteVendor = async (id) => {
+        if (!window.confirm('Delete this vendor?')) return;
+        try { await axios.delete(`/vendors/${id}`); setMessage({ text: 'Vendor deleted!', type: 'success' }); fetchVendors(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+    };
+
+    const resetVendorForm = () => {
+        setVendorForm({ code: '', name: '', gstin: '', phone: '', email: '', address: '', city: '', state: '' });
+        setEditingVendorId(null);
+    };
+
+    // ==================== PHASE 3: INVOICES ====================
     const [invoices, setInvoices] = useState([]);
     const [invoiceItems, setInvoiceItems] = useState([]);
     const [invoiceForm, setInvoiceForm] = useState({
         customerId: '', customerName: '', customerGstin: '', customerAddress: ''
     });
 
-    // Purchase Orders
+    const fetchInvoices = async () => {
+        try { const res = await axios.get('/invoices'); setInvoices(Array.isArray(res.data) ? res.data : []); } catch (e) { setInvoices([]); }
+    };
+
+    const handleInvoiceSubmit = async (e) => {
+        e.preventDefault();
+        if (invoiceItems.length === 0) {
+            setMessage({ text: 'Add at least one item!', type: 'danger' });
+            return;
+        }
+        setLoading(true);
+        try {
+            const data = {
+                customerId: invoiceForm.customerId,
+                customerName: invoiceForm.customerName,
+                customerGstin: invoiceForm.customerGstin,
+                customerAddress: invoiceForm.customerAddress,
+                items: invoiceItems
+            };
+            const res = await axios.post('/invoices', data);
+            setMessage({ text: `Invoice ${res.data.invoiceNumber} created!`, type: 'success' });
+            setInvoiceItems([]);
+            resetInvoiceForm();
+            fetchInvoices();
+            fetchAllData();
+            setShowModal(false);
+        } catch (error) {
+            setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
+        } finally { setLoading(false); }
+    };
+
+    const deleteInvoice = async (id) => {
+        if (!window.confirm('Delete this invoice?')) return;
+        try { await axios.delete(`/invoices/${id}`); setMessage({ text: 'Invoice deleted!', type: 'success' }); fetchInvoices(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+    };
+
+    const resetInvoiceForm = () => {
+        setInvoiceForm({ customerId: '', customerName: '', customerGstin: '', customerAddress: '' });
+        setInvoiceItems([]);
+    };
+
+    const addInvoiceItem = (product) => {
+        const existing = invoiceItems.find(i => i.name === product.name);
+        if (existing) {
+            setInvoiceItems(invoiceItems.map(i =>
+                i.name === product.name ? { ...i, qty: i.qty + 1, amount: (i.qty + 1) * i.rate, total: (i.qty + 1) * i.rate * (1 + i.gstRate / 100) } : i
+            ));
+        } else {
+            const newItem = {
+                name: product.name,
+                hsn: product.hsn || '',
+                qty: 1,
+                rate: product.sellingPrice,
+                gstRate: product.gstRate || 18,
+                amount: product.sellingPrice,
+                gstAmount: product.sellingPrice * (product.gstRate || 18) / 100,
+                total: product.sellingPrice * (1 + (product.gstRate || 18) / 100)
+            };
+            setInvoiceItems([...invoiceItems, newItem]);
+        }
+    };
+
+    const removeInvoiceItem = (index) => {
+        setInvoiceItems(invoiceItems.filter((_, i) => i !== index));
+    };
+
+    // ==================== PHASE 4: PURCHASE ORDERS ====================
     const [purchaseOrders, setPurchaseOrders] = useState([]);
     const [poItems, setPoItems] = useState([]);
     const [poForm, setPoForm] = useState({
         vendorId: '', vendorName: '', vendorGstin: '', deliveryDate: ''
     });
 
-    // Reports
+    const fetchPurchaseOrders = async () => {
+        try { const res = await axios.get('/purchase-orders'); setPurchaseOrders(Array.isArray(res.data) ? res.data : []); } catch (e) { setPurchaseOrders([]); }
+    };
+
+    const handlePOSubmit = async (e) => {
+        e.preventDefault();
+        if (poItems.length === 0) {
+            setMessage({ text: 'Add at least one item!', type: 'danger' });
+            return;
+        }
+        setLoading(true);
+        try {
+            const data = {
+                vendorId: poForm.vendorId,
+                vendorName: poForm.vendorName,
+                vendorGstin: poForm.vendorGstin,
+                deliveryDate: poForm.deliveryDate || new Date().toISOString().split('T')[0],
+                items: poItems
+            };
+            const res = await axios.post('/purchase-orders', data);
+            setMessage({ text: `PO ${res.data.poNumber} created!`, type: 'success' });
+            setPoItems([]);
+            resetPOForm();
+            fetchPurchaseOrders();
+            fetchAllData();
+            setShowModal(false);
+        } catch (error) {
+            setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
+        } finally { setLoading(false); }
+    };
+
+    const deletePO = async (id) => {
+        if (!window.confirm('Delete this PO?')) return;
+        try { await axios.delete(`/purchase-orders/${id}`); setMessage({ text: 'PO deleted!', type: 'success' }); fetchPurchaseOrders(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+    };
+
+    const resetPOForm = () => {
+        setPoForm({ vendorId: '', vendorName: '', vendorGstin: '', deliveryDate: '' });
+        setPoItems([]);
+    };
+
+    const addPOItem = (product) => {
+        const existing = poItems.find(i => i.name === product.name);
+        if (existing) {
+            setPoItems(poItems.map(i =>
+                i.name === product.name ? { ...i, qty: i.qty + 1, amount: (i.qty + 1) * i.rate, total: (i.qty + 1) * i.rate * (1 + i.gstRate / 100) } : i
+            ));
+        } else {
+            const newItem = {
+                name: product.name,
+                hsn: product.hsn || '',
+                qty: 1,
+                rate: product.purchasePrice,
+                gstRate: product.gstRate || 18,
+                amount: product.purchasePrice,
+                gstAmount: product.purchasePrice * (product.gstRate || 18) / 100,
+                total: product.purchasePrice * (1 + (product.gstRate || 18) / 100)
+            };
+            setPoItems([...poItems, newItem]);
+        }
+    };
+
+    const removePOItem = (index) => {
+        setPoItems(poItems.filter((_, i) => i !== index));
+    };
+
+    // ==================== PHASE 5: REPORTS ====================
     const [dashboardStats, setDashboardStats] = useState({});
     const [salesReport, setSalesReport] = useState({});
     const [purchaseReport, setPurchaseReport] = useState({});
@@ -197,124 +376,6 @@ function App() {
     const [trialBalance, setTrialBalance] = useState({});
     const [profitLoss, setProfitLoss] = useState({});
 
-    // AI
-    const [chatMessages, setChatMessages] = useState([
-        { sender: 'ai', text: '👋 Hello! I am your AI Assistant. Ask me anything!' }
-    ]);
-    const [chatInput, setChatInput] = useState('');
-    const [searchKeyword, setSearchKeyword] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
-    const [anomalies, setAnomalies] = useState([]);
-    const [prediction, setPrediction] = useState(null);
-    const [qrData, setQrData] = useState('');
-    const [qrResult, setQrResult] = useState(null);
-    const [extractText, setExtractText] = useState('');
-    const [extractResult, setExtractResult] = useState(null);
-    const [autoInvoiceData, setAutoInvoiceData] = useState({
-        customerName: '',
-        items: [{ name: '', qty: 1, rate: 0 }]
-    });
-    const [autoInvoiceResult, setAutoInvoiceResult] = useState(null);
-    const [agentResults, setAgentResults] = useState([]);
-
-    // HR
-    const [employees, setEmployees] = useState([]);
-    const [employeeForm, setEmployeeForm] = useState({
-        employeeId: '', firstName: '', lastName: '', email: '', phone: '',
-        department: '', designation: '', joiningDate: '', salary: 0,
-        gender: '', dateOfBirth: '', bloodGroup: '', status: 'ACTIVE'
-    });
-    const [editingEmployeeId, setEditingEmployeeId] = useState(null);
-    const [leaves, setLeaves] = useState([]);
-    const [leaveForm, setLeaveForm] = useState({
-        employeeId: '', leaveType: 'CASUAL', startDate: '', endDate: '',
-        reason: '', status: 'PENDING'
-    });
-    const [editingLeaveId, setEditingLeaveId] = useState(null);
-
-    // Manufacturing
-    const [boms, setBoms] = useState([]);
-    const [bomForm, setBomForm] = useState({
-        productId: '', bomName: '', version: '1.0', status: 'ACTIVE'
-    });
-    const [editingBomId, setEditingBomId] = useState(null);
-    const [productionOrders, setProductionOrders] = useState([]);
-    const [productionForm, setProductionForm] = useState({
-        productId: '', quantity: 0, startDate: '', endDate: '',
-        status: 'PLANNED', priority: 'MEDIUM'
-    });
-    const [editingProductionId, setEditingProductionId] = useState(null);
-
-    // Projects
-    const [projects, setProjects] = useState([]);
-    const [projectForm, setProjectForm] = useState({
-        projectName: '', projectCode: '', description: '',
-        startDate: '', endDate: '', status: 'PLANNED',
-        budget: 0, clientName: '', priority: 'MEDIUM'
-    });
-    const [editingProjectId, setEditingProjectId] = useState(null);
-    const [tasks, setTasks] = useState([]);
-    const [taskForm, setTaskForm] = useState({
-        taskName: '', description: '', projectId: '',
-        assignedTo: '', startDate: '', dueDate: '',
-        status: 'PENDING', priority: 'MEDIUM', estimatedHours: 0
-    });
-    const [editingTaskId, setEditingTaskId] = useState(null);
-    const [timesheets, setTimesheets] = useState([]);
-    const [timesheetForm, setTimesheetForm] = useState({
-        employeeId: '', taskId: '', projectId: '',
-        entryDate: '', hoursWorked: 0, description: '', status: 'PENDING'
-    });
-    const [editingTimesheetId, setEditingTimesheetId] = useState(null);
-
-    // Multi-Company
-    const [companies, setCompanies] = useState([]);
-    const [companyForm, setCompanyForm] = useState({
-        companyName: '', companyCode: '', gstNo: '', panNo: '',
-        address: '', city: '', state: '', pincode: '', country: 'India',
-        phone: '', email: '', currency: 'INR', status: 'ACTIVE'
-    });
-    const [editingCompanyId, setEditingCompanyId] = useState(null);
-    const [budgets, setBudgets] = useState([]);
-    const [budgetForm, setBudgetForm] = useState({
-        companyId: '', budgetName: '', category: '',
-        amount: 0, fiscalYear: '', status: 'ACTIVE'
-    });
-    const [editingBudgetId, setEditingBudgetId] = useState(null);
-
-    // ============================================================
-    // FETCH FUNCTIONS
-    // ============================================================
-    const fetchAllData = async () => {
-        await Promise.all([
-            fetchCustomers(), fetchProducts(), fetchVendors(),
-            fetchInvoices(), fetchPurchaseOrders(),
-            fetchDashboardStats(), fetchSalesReport(), fetchPurchaseReport(),
-            fetchGSTReport(), fetchStockReport(), fetchCustomerReport(),
-            fetchVendorReport(), fetchTrialBalance(), fetchProfitLoss(),
-            fetchEmployees(), fetchLeaves(), fetchBoms(), fetchProductionOrders(),
-            fetchProjects(), fetchTasks(), fetchTimesheets(),
-            fetchCompanies(), fetchBudgets()
-        ]);
-    };
-
-    useEffect(() => { fetchAllData(); }, []);
-
-    const fetchCustomers = async () => {
-        try { const res = await axios.get('/customers'); setCustomers(Array.isArray(res.data) ? res.data : []); } catch (e) { setCustomers([]); }
-    };
-    const fetchProducts = async () => {
-        try { const res = await axios.get('/products'); setProducts(Array.isArray(res.data) ? res.data : []); } catch (e) { setProducts([]); }
-    };
-    const fetchVendors = async () => {
-        try { const res = await axios.get('/vendors'); setVendors(Array.isArray(res.data) ? res.data : []); } catch (e) { setVendors([]); }
-    };
-    const fetchInvoices = async () => {
-        try { const res = await axios.get('/invoices'); setInvoices(Array.isArray(res.data) ? res.data : []); } catch (e) { setInvoices([]); }
-    };
-    const fetchPurchaseOrders = async () => {
-        try { const res = await axios.get('/purchase-orders'); setPurchaseOrders(Array.isArray(res.data) ? res.data : []); } catch (e) { setPurchaseOrders([]); }
-    };
     const fetchDashboardStats = async () => {
         try { const res = await axios.get('/reports/dashboard'); setDashboardStats(res.data); } catch (e) { }
     };
@@ -342,232 +403,27 @@ function App() {
     const fetchProfitLoss = async () => {
         try { const res = await axios.get('/reports/profit-loss'); setProfitLoss(res.data); } catch (e) { }
     };
-    const fetchEmployees = async () => {
-        try { const res = await axios.get('/employees'); setEmployees(Array.isArray(res.data) ? res.data : []); } catch (e) { setEmployees([]); }
-    };
-    const fetchLeaves = async () => {
-        try { const res = await axios.get('/leaves'); setLeaves(Array.isArray(res.data) ? res.data : []); } catch (e) { setLeaves([]); }
-    };
-    const fetchBoms = async () => {
-        try { const res = await axios.get('/boms'); setBoms(Array.isArray(res.data) ? res.data : []); } catch (e) { setBoms([]); }
-    };
-    const fetchProductionOrders = async () => {
-        try { const res = await axios.get('/production-orders'); setProductionOrders(Array.isArray(res.data) ? res.data : []); } catch (e) { setProductionOrders([]); }
-    };
-    const fetchProjects = async () => {
-        try { const res = await axios.get('/projects'); setProjects(Array.isArray(res.data) ? res.data : []); } catch (e) { setProjects([]); }
-    };
-    const fetchTasks = async () => {
-        try { const res = await axios.get('/tasks'); setTasks(Array.isArray(res.data) ? res.data : []); } catch (e) { setTasks([]); }
-    };
-    const fetchTimesheets = async () => {
-        try { const res = await axios.get('/timesheets'); setTimesheets(Array.isArray(res.data) ? res.data : []); } catch (e) { setTimesheets([]); }
-    };
-    const fetchCompanies = async () => {
-        try { const res = await axios.get('/companies'); setCompanies(Array.isArray(res.data) ? res.data : []); } catch (e) { setCompanies([]); }
-    };
-    const fetchBudgets = async () => {
-        try { const res = await axios.get('/budgets'); setBudgets(Array.isArray(res.data) ? res.data : []); } catch (e) { setBudgets([]); }
-    };
 
-    // ============================================================
-    // CRUD FUNCTIONS (All modules - Real operations)
-    // ============================================================
-    const handleCustomerSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        try {
-            if (editingCustomerId) {
-                await axios.put(`/customers/${editingCustomerId}`, customerForm);
-                setMessage({ text: 'Customer updated!', type: 'success' });
-            } else {
-                await axios.post('/customers', customerForm);
-                setMessage({ text: 'Customer added!', type: 'success' });
-            }
-            resetCustomerForm();
-            fetchCustomers();
-        } catch (error) {
-            setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
-        } finally { setLoading(false); }
-    };
-    const deleteCustomer = async (id) => {
-        if (!window.confirm('Delete this customer?')) return;
-        try { await axios.delete(`/customers/${id}`); setMessage({ text: 'Customer deleted!', type: 'success' }); fetchCustomers(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
-    };
-    const resetCustomerForm = () => {
-        setCustomerForm({ code: '', name: '', gstin: '', phone: '', email: '', address: '', city: '', state: '', creditLimit: 0 });
-        setEditingCustomerId(null);
-    };
+    // ==================== PHASE 6: AI ====================
+    const [chatMessages, setChatMessages] = useState([
+        { sender: 'ai', text: '👋 Hello! I am your AI Assistant. Ask me about vendors, products, sales, stock, or anything!' }
+    ]);
+    const [chatInput, setChatInput] = useState('');
+    const [searchKeyword, setSearchKeyword] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+    const [anomalies, setAnomalies] = useState([]);
+    const [prediction, setPrediction] = useState(null);
+    const [qrData, setQrData] = useState('');
+    const [qrResult, setQrResult] = useState(null);
+    const [extractText, setExtractText] = useState('');
+    const [extractResult, setExtractResult] = useState(null);
+    const [autoInvoiceData, setAutoInvoiceData] = useState({
+        customerName: '',
+        items: [{ name: '', qty: 1, rate: 0 }]
+    });
+    const [autoInvoiceResult, setAutoInvoiceResult] = useState(null);
+    const [agentResults, setAgentResults] = useState([]);
 
-    const handleProductSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        try {
-            if (editingProductId) {
-                await axios.put(`/products/${editingProductId}`, productForm);
-                setMessage({ text: 'Product updated!', type: 'success' });
-            } else {
-                await axios.post('/products', productForm);
-                setMessage({ text: 'Product added!', type: 'success' });
-            }
-            resetProductForm();
-            fetchProducts();
-        } catch (error) {
-            setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
-        } finally { setLoading(false); }
-    };
-    const deleteProduct = async (id) => {
-        if (!window.confirm('Delete this product?')) return;
-        try { await axios.delete(`/products/${id}`); setMessage({ text: 'Product deleted!', type: 'success' }); fetchProducts(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
-    };
-    const resetProductForm = () => {
-        setProductForm({ code: '', name: '', hsn: '', unit: '', gstRate: 18, purchasePrice: 0, sellingPrice: 0, stock: 0, minStock: 0 });
-        setEditingProductId(null);
-    };
-
-    const handleVendorSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        try {
-            if (editingVendorId) {
-                await axios.put(`/vendors/${editingVendorId}`, vendorForm);
-                setMessage({ text: 'Vendor updated!', type: 'success' });
-            } else {
-                await axios.post('/vendors', vendorForm);
-                setMessage({ text: 'Vendor added!', type: 'success' });
-            }
-            resetVendorForm();
-            fetchVendors();
-        } catch (error) {
-            setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
-        } finally { setLoading(false); }
-    };
-    const deleteVendor = async (id) => {
-        if (!window.confirm('Delete this vendor?')) return;
-        try { await axios.delete(`/vendors/${id}`); setMessage({ text: 'Vendor deleted!', type: 'success' }); fetchVendors(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
-    };
-    const resetVendorForm = () => {
-        setVendorForm({ code: '', name: '', gstin: '', phone: '', email: '', address: '', city: '', state: '' });
-        setEditingVendorId(null);
-    };
-
-    const handleInvoiceSubmit = async (e) => {
-        e.preventDefault();
-        if (invoiceItems.length === 0) {
-            setMessage({ text: 'Add at least one item!', type: 'danger' });
-            return;
-        }
-        setLoading(true);
-        try {
-            const data = {
-                customerId: invoiceForm.customerId,
-                customerName: invoiceForm.customerName,
-                customerGstin: invoiceForm.customerGstin,
-                customerAddress: invoiceForm.customerAddress,
-                items: invoiceItems
-            };
-            const res = await axios.post('/invoices', data);
-            setMessage({ text: `Invoice ${res.data.invoiceNumber} created!`, type: 'success' });
-            setInvoiceItems([]);
-            resetInvoiceForm();
-            fetchInvoices();
-            setShowModal(false);
-        } catch (error) {
-            setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
-        } finally { setLoading(false); }
-    };
-    const deleteInvoice = async (id) => {
-        if (!window.confirm('Delete this invoice?')) return;
-        try { await axios.delete(`/invoices/${id}`); setMessage({ text: 'Invoice deleted!', type: 'success' }); fetchInvoices(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
-    };
-    const resetInvoiceForm = () => {
-        setInvoiceForm({ customerId: '', customerName: '', customerGstin: '', customerAddress: '' });
-        setInvoiceItems([]);
-    };
-    const addInvoiceItem = (product) => {
-        const existing = invoiceItems.find(i => i.name === product.name);
-        if (existing) {
-            setInvoiceItems(invoiceItems.map(i =>
-                i.name === product.name ? { ...i, qty: i.qty + 1, amount: (i.qty + 1) * i.rate, total: (i.qty + 1) * i.rate * (1 + i.gstRate / 100) } : i
-            ));
-        } else {
-            const newItem = {
-                name: product.name,
-                hsn: product.hsn || '',
-                qty: 1,
-                rate: product.sellingPrice,
-                gstRate: product.gstRate || 18,
-                amount: product.sellingPrice,
-                gstAmount: product.sellingPrice * (product.gstRate || 18) / 100,
-                total: product.sellingPrice * (1 + (product.gstRate || 18) / 100)
-            };
-            setInvoiceItems([...invoiceItems, newItem]);
-        }
-    };
-    const removeInvoiceItem = (index) => {
-        setInvoiceItems(invoiceItems.filter((_, i) => i !== index));
-    };
-
-    const handlePOSubmit = async (e) => {
-        e.preventDefault();
-        if (poItems.length === 0) {
-            setMessage({ text: 'Add at least one item!', type: 'danger' });
-            return;
-        }
-        setLoading(true);
-        try {
-            const data = {
-                vendorId: poForm.vendorId,
-                vendorName: poForm.vendorName,
-                vendorGstin: poForm.vendorGstin,
-                deliveryDate: poForm.deliveryDate || new Date().toISOString().split('T')[0],
-                items: poItems
-            };
-            const res = await axios.post('/purchase-orders', data);
-            setMessage({ text: `PO ${res.data.poNumber} created!`, type: 'success' });
-            setPoItems([]);
-            resetPOForm();
-            fetchPurchaseOrders();
-            setShowModal(false);
-        } catch (error) {
-            setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
-        } finally { setLoading(false); }
-    };
-    const deletePO = async (id) => {
-        if (!window.confirm('Delete this PO?')) return;
-        try { await axios.delete(`/purchase-orders/${id}`); setMessage({ text: 'PO deleted!', type: 'success' }); fetchPurchaseOrders(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
-    };
-    const resetPOForm = () => {
-        setPoForm({ vendorId: '', vendorName: '', vendorGstin: '', deliveryDate: '' });
-        setPoItems([]);
-    };
-    const addPOItem = (product) => {
-        const existing = poItems.find(i => i.name === product.name);
-        if (existing) {
-            setPoItems(poItems.map(i =>
-                i.name === product.name ? { ...i, qty: i.qty + 1, amount: (i.qty + 1) * i.rate, total: (i.qty + 1) * i.rate * (1 + i.gstRate / 100) } : i
-            ));
-        } else {
-            const newItem = {
-                name: product.name,
-                hsn: product.hsn || '',
-                qty: 1,
-                rate: product.purchasePrice,
-                gstRate: product.gstRate || 18,
-                amount: product.purchasePrice,
-                gstAmount: product.purchasePrice * (product.gstRate || 18) / 100,
-                total: product.purchasePrice * (1 + (product.gstRate || 18) / 100)
-            };
-            setPoItems([...poItems, newItem]);
-        }
-    };
-    const removePOItem = (index) => {
-        setPoItems(poItems.filter((_, i) => i !== index));
-    };
-
-    // ============================================================
-    // AI FUNCTIONS
-    // ============================================================
     const sendChat = async () => {
         if (!chatInput.trim()) return;
         setChatMessages([...chatMessages, { sender: 'user', text: chatInput }]);
@@ -581,8 +437,11 @@ function App() {
             setChatInput('');
         } catch (error) {
             setMessage({ text: 'AI Chat error!', type: 'danger' });
-        } finally { setLoading(false); }
+        } finally {
+            setLoading(false);
+        }
     };
+
     const handleSmartSearch = async () => {
         if (!searchKeyword.trim()) {
             setMessage({ text: 'Enter search keyword!', type: 'warning' });
@@ -595,8 +454,11 @@ function App() {
             setMessage({ text: `Found ${res.data.total || 0} results!`, type: 'success' });
         } catch (error) {
             setMessage({ text: 'Search error!', type: 'danger' });
-        } finally { setLoading(false); }
+        } finally {
+            setLoading(false);
+        }
     };
+
     const handleAnomalyDetection = async () => {
         setLoading(true);
         try {
@@ -605,8 +467,11 @@ function App() {
             setMessage({ text: `Found ${res.data.totalAnomalies || 0} anomalies!`, type: res.data.totalAnomalies > 0 ? 'warning' : 'success' });
         } catch (error) {
             setMessage({ text: 'Anomaly detection error!', type: 'danger' });
-        } finally { setLoading(false); }
+        } finally {
+            setLoading(false);
+        }
     };
+
     const handlePredict = async () => {
         setLoading(true);
         try {
@@ -615,8 +480,11 @@ function App() {
             setMessage({ text: 'Prediction generated!', type: 'success' });
         } catch (error) {
             setMessage({ text: 'Prediction error!', type: 'danger' });
-        } finally { setLoading(false); }
+        } finally {
+            setLoading(false);
+        }
     };
+
     const handleQRScan = async () => {
         if (!qrData.trim()) {
             setMessage({ text: 'Enter QR data!', type: 'warning' });
@@ -629,8 +497,11 @@ function App() {
             setMessage({ text: res.data.message || 'QR scanned!', type: 'success' });
         } catch (error) {
             setMessage({ text: 'QR scan error!', type: 'danger' });
-        } finally { setLoading(false); }
+        } finally {
+            setLoading(false);
+        }
     };
+
     const handleExtract = async () => {
         if (!extractText.trim()) {
             setMessage({ text: 'Enter text to extract!', type: 'warning' });
@@ -643,8 +514,11 @@ function App() {
             setMessage({ text: 'Data extracted!', type: 'success' });
         } catch (error) {
             setMessage({ text: 'Extraction error!', type: 'danger' });
-        } finally { setLoading(false); }
+        } finally {
+            setLoading(false);
+        }
     };
+
     const handleAutoInvoice = async () => {
         const { customerName, items } = autoInvoiceData;
         if (!customerName.trim() || items.some(i => !i.name.trim() || i.qty <= 0)) {
@@ -658,8 +532,11 @@ function App() {
             setMessage({ text: res.data.message || 'Invoice generated!', type: 'success' });
         } catch (error) {
             setMessage({ text: 'Auto invoice error!', type: 'danger' });
-        } finally { setLoading(false); }
+        } finally {
+            setLoading(false);
+        }
     };
+
     const handleRunAgents = async () => {
         setLoading(true);
         try {
@@ -668,27 +545,42 @@ function App() {
             setMessage({ text: 'Agents executed!', type: 'success' });
         } catch (error) {
             setMessage({ text: 'Agent error!', type: 'danger' });
-        } finally { setLoading(false); }
+        } finally {
+            setLoading(false);
+        }
     };
+
     const addAutoInvoiceItem = () => {
         setAutoInvoiceData({
             ...autoInvoiceData,
             items: [...autoInvoiceData.items, { name: '', qty: 1, rate: 0 }]
         });
     };
+
     const updateAutoInvoiceItem = (index, field, value) => {
         const updated = [...autoInvoiceData.items];
         updated[index][field] = value;
         setAutoInvoiceData({ ...autoInvoiceData, items: updated });
     };
+
     const removeAutoInvoiceItem = (index) => {
         const updated = autoInvoiceData.items.filter((_, i) => i !== index);
         setAutoInvoiceData({ ...autoInvoiceData, items: updated });
     };
 
-    // ============================================================
-    // HR FUNCTIONS
-    // ============================================================
+    // ==================== PHASE 7: HR - EMPLOYEES ====================
+    const [employees, setEmployees] = useState([]);
+    const [employeeForm, setEmployeeForm] = useState({
+        employeeId: '', firstName: '', lastName: '', email: '', phone: '',
+        department: '', designation: '', joiningDate: '', salary: 0,
+        gender: '', dateOfBirth: '', bloodGroup: '', status: 'ACTIVE'
+    });
+    const [editingEmployeeId, setEditingEmployeeId] = useState(null);
+
+    const fetchEmployees = async () => {
+        try { const res = await axios.get('/employees'); setEmployees(Array.isArray(res.data) ? res.data : []); } catch (e) { setEmployees([]); }
+    };
+
     const handleEmployeeSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -702,17 +594,32 @@ function App() {
             }
             resetEmployeeForm();
             fetchEmployees();
+            fetchAllData();
         } catch (error) {
             setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
         } finally { setLoading(false); }
     };
+
     const deleteEmployee = async (id) => {
         if (!window.confirm('Delete this employee?')) return;
-        try { await axios.delete(`/employees/${id}`); setMessage({ text: 'Employee deleted!', type: 'success' }); fetchEmployees(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+        try { await axios.delete(`/employees/${id}`); setMessage({ text: 'Employee deleted!', type: 'success' }); fetchEmployees(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
     };
+
     const resetEmployeeForm = () => {
         setEmployeeForm({ employeeId: '', firstName: '', lastName: '', email: '', phone: '', department: '', designation: '', joiningDate: '', salary: 0, gender: '', dateOfBirth: '', bloodGroup: '', status: 'ACTIVE' });
         setEditingEmployeeId(null);
+    };
+
+    // ==================== PHASE 7: LEAVES ====================
+    const [leaves, setLeaves] = useState([]);
+    const [leaveForm, setLeaveForm] = useState({
+        employeeId: '', leaveType: 'CASUAL', startDate: '', endDate: '',
+        reason: '', status: 'PENDING'
+    });
+    const [editingLeaveId, setEditingLeaveId] = useState(null);
+
+    const fetchLeaves = async () => {
+        try { const res = await axios.get('/leaves'); setLeaves(Array.isArray(res.data) ? res.data : []); } catch (e) { setLeaves([]); }
     };
 
     const handleLeaveSubmit = async (e) => {
@@ -728,26 +635,41 @@ function App() {
             }
             resetLeaveForm();
             fetchLeaves();
+            fetchAllData();
         } catch (error) {
             setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
         } finally { setLoading(false); }
     };
+
     const deleteLeave = async (id) => {
         if (!window.confirm('Delete this leave?')) return;
-        try { await axios.delete(`/leaves/${id}`); setMessage({ text: 'Leave deleted!', type: 'success' }); fetchLeaves(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+        try { await axios.delete(`/leaves/${id}`); setMessage({ text: 'Leave deleted!', type: 'success' }); fetchLeaves(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
     };
+
     const approveLeave = async (id) => {
         try { await axios.put(`/leaves/${id}/approve?approvedBy=Admin`); setMessage({ text: 'Leave approved!', type: 'success' }); fetchLeaves(); } catch (e) { setMessage({ text: 'Error approving!', type: 'danger' }); }
     };
+
     const rejectLeave = async (id) => {
         try { await axios.put(`/leaves/${id}/reject`); setMessage({ text: 'Leave rejected!', type: 'success' }); fetchLeaves(); } catch (e) { setMessage({ text: 'Error rejecting!', type: 'danger' }); }
     };
+
     const resetLeaveForm = () => {
         setLeaveForm({ employeeId: '', leaveType: 'CASUAL', startDate: '', endDate: '', reason: '', status: 'PENDING' });
         setEditingLeaveId(null);
     };
 
-    // Manufacturing
+    // ==================== PHASE 8: BOM ====================
+    const [boms, setBoms] = useState([]);
+    const [bomForm, setBomForm] = useState({
+        productId: '', bomName: '', version: '1.0', status: 'ACTIVE'
+    });
+    const [editingBomId, setEditingBomId] = useState(null);
+
+    const fetchBoms = async () => {
+        try { const res = await axios.get('/boms'); setBoms(Array.isArray(res.data) ? res.data : []); } catch (e) { setBoms([]); }
+    };
+
     const handleBomSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -761,17 +683,32 @@ function App() {
             }
             resetBomForm();
             fetchBoms();
+            fetchAllData();
         } catch (error) {
             setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
         } finally { setLoading(false); }
     };
+
     const deleteBom = async (id) => {
         if (!window.confirm('Delete this BOM?')) return;
-        try { await axios.delete(`/boms/${id}`); setMessage({ text: 'BOM deleted!', type: 'success' }); fetchBoms(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+        try { await axios.delete(`/boms/${id}`); setMessage({ text: 'BOM deleted!', type: 'success' }); fetchBoms(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
     };
+
     const resetBomForm = () => {
         setBomForm({ productId: '', bomName: '', version: '1.0', status: 'ACTIVE' });
         setEditingBomId(null);
+    };
+
+    // ==================== PHASE 8: PRODUCTION ORDERS ====================
+    const [productionOrders, setProductionOrders] = useState([]);
+    const [productionForm, setProductionForm] = useState({
+        productId: '', quantity: 0, startDate: '', endDate: '',
+        status: 'PLANNED', priority: 'MEDIUM'
+    });
+    const [editingProductionId, setEditingProductionId] = useState(null);
+
+    const fetchProductionOrders = async () => {
+        try { const res = await axios.get('/production-orders'); setProductionOrders(Array.isArray(res.data) ? res.data : []); } catch (e) { setProductionOrders([]); }
     };
 
     const handleProductionSubmit = async (e) => {
@@ -787,20 +724,35 @@ function App() {
             }
             resetProductionForm();
             fetchProductionOrders();
+            fetchAllData();
         } catch (error) {
             setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
         } finally { setLoading(false); }
     };
+
     const deleteProduction = async (id) => {
         if (!window.confirm('Delete this production order?')) return;
-        try { await axios.delete(`/production-orders/${id}`); setMessage({ text: 'Production order deleted!', type: 'success' }); fetchProductionOrders(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+        try { await axios.delete(`/production-orders/${id}`); setMessage({ text: 'Production order deleted!', type: 'success' }); fetchProductionOrders(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
     };
+
     const resetProductionForm = () => {
         setProductionForm({ productId: '', quantity: 0, startDate: '', endDate: '', status: 'PLANNED', priority: 'MEDIUM' });
         setEditingProductionId(null);
     };
 
-    // Projects
+    // ==================== PHASE 9: PROJECTS ====================
+    const [projects, setProjects] = useState([]);
+    const [projectForm, setProjectForm] = useState({
+        projectName: '', projectCode: '', description: '',
+        startDate: '', endDate: '', status: 'PLANNED',
+        budget: 0, clientName: '', priority: 'MEDIUM'
+    });
+    const [editingProjectId, setEditingProjectId] = useState(null);
+
+    const fetchProjects = async () => {
+        try { const res = await axios.get('/projects'); setProjects(Array.isArray(res.data) ? res.data : []); } catch (e) { setProjects([]); }
+    };
+
     const handleProjectSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -814,17 +766,33 @@ function App() {
             }
             resetProjectForm();
             fetchProjects();
+            fetchAllData();
         } catch (error) {
             setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
         } finally { setLoading(false); }
     };
+
     const deleteProject = async (id) => {
         if (!window.confirm('Delete this project?')) return;
-        try { await axios.delete(`/projects/${id}`); setMessage({ text: 'Project deleted!', type: 'success' }); fetchProjects(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+        try { await axios.delete(`/projects/${id}`); setMessage({ text: 'Project deleted!', type: 'success' }); fetchProjects(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
     };
+
     const resetProjectForm = () => {
         setProjectForm({ projectName: '', projectCode: '', description: '', startDate: '', endDate: '', status: 'PLANNED', budget: 0, clientName: '', priority: 'MEDIUM' });
         setEditingProjectId(null);
+    };
+
+    // ==================== PHASE 9: TASKS ====================
+    const [tasks, setTasks] = useState([]);
+    const [taskForm, setTaskForm] = useState({
+        taskName: '', description: '', projectId: '',
+        assignedTo: '', startDate: '', dueDate: '',
+        status: 'PENDING', priority: 'MEDIUM', estimatedHours: 0
+    });
+    const [editingTaskId, setEditingTaskId] = useState(null);
+
+    const fetchTasks = async () => {
+        try { const res = await axios.get('/tasks'); setTasks(Array.isArray(res.data) ? res.data : []); } catch (e) { setTasks([]); }
     };
 
     const handleTaskSubmit = async (e) => {
@@ -840,17 +808,32 @@ function App() {
             }
             resetTaskForm();
             fetchTasks();
+            fetchAllData();
         } catch (error) {
             setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
         } finally { setLoading(false); }
     };
+
     const deleteTask = async (id) => {
         if (!window.confirm('Delete this task?')) return;
-        try { await axios.delete(`/tasks/${id}`); setMessage({ text: 'Task deleted!', type: 'success' }); fetchTasks(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+        try { await axios.delete(`/tasks/${id}`); setMessage({ text: 'Task deleted!', type: 'success' }); fetchTasks(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
     };
+
     const resetTaskForm = () => {
         setTaskForm({ taskName: '', description: '', projectId: '', assignedTo: '', startDate: '', dueDate: '', status: 'PENDING', priority: 'MEDIUM', estimatedHours: 0 });
         setEditingTaskId(null);
+    };
+
+    // ==================== PHASE 9: TIMESHEETS ====================
+    const [timesheets, setTimesheets] = useState([]);
+    const [timesheetForm, setTimesheetForm] = useState({
+        employeeId: '', taskId: '', projectId: '',
+        entryDate: '', hoursWorked: 0, description: '', status: 'PENDING'
+    });
+    const [editingTimesheetId, setEditingTimesheetId] = useState(null);
+
+    const fetchTimesheets = async () => {
+        try { const res = await axios.get('/timesheets'); setTimesheets(Array.isArray(res.data) ? res.data : []); } catch (e) { setTimesheets([]); }
     };
 
     const handleTimesheetSubmit = async (e) => {
@@ -866,20 +849,35 @@ function App() {
             }
             resetTimesheetForm();
             fetchTimesheets();
+            fetchAllData();
         } catch (error) {
             setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
         } finally { setLoading(false); }
     };
+
     const deleteTimesheet = async (id) => {
         if (!window.confirm('Delete this timesheet?')) return;
-        try { await axios.delete(`/timesheets/${id}`); setMessage({ text: 'Timesheet deleted!', type: 'success' }); fetchTimesheets(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+        try { await axios.delete(`/timesheets/${id}`); setMessage({ text: 'Timesheet deleted!', type: 'success' }); fetchTimesheets(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
     };
+
     const resetTimesheetForm = () => {
         setTimesheetForm({ employeeId: '', taskId: '', projectId: '', entryDate: '', hoursWorked: 0, description: '', status: 'PENDING' });
         setEditingTimesheetId(null);
     };
 
-    // Companies
+    // ==================== PHASE 10: COMPANIES ====================
+    const [companies, setCompanies] = useState([]);
+    const [companyForm, setCompanyForm] = useState({
+        companyName: '', companyCode: '', gstNo: '', panNo: '',
+        address: '', city: '', state: '', pincode: '', country: 'India',
+        phone: '', email: '', currency: 'INR', status: 'ACTIVE'
+    });
+    const [editingCompanyId, setEditingCompanyId] = useState(null);
+
+    const fetchCompanies = async () => {
+        try { const res = await axios.get('/companies'); setCompanies(Array.isArray(res.data) ? res.data : []); } catch (e) { setCompanies([]); }
+    };
+
     const handleCompanySubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -893,17 +891,32 @@ function App() {
             }
             resetCompanyForm();
             fetchCompanies();
+            fetchAllData();
         } catch (error) {
             setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
         } finally { setLoading(false); }
     };
+
     const deleteCompany = async (id) => {
         if (!window.confirm('Delete this company?')) return;
-        try { await axios.delete(`/companies/${id}`); setMessage({ text: 'Company deleted!', type: 'success' }); fetchCompanies(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+        try { await axios.delete(`/companies/${id}`); setMessage({ text: 'Company deleted!', type: 'success' }); fetchCompanies(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
     };
+
     const resetCompanyForm = () => {
         setCompanyForm({ companyName: '', companyCode: '', gstNo: '', panNo: '', address: '', city: '', state: '', pincode: '', country: 'India', phone: '', email: '', currency: 'INR', status: 'ACTIVE' });
         setEditingCompanyId(null);
+    };
+
+    // ==================== PHASE 10: BUDGETS ====================
+    const [budgets, setBudgets] = useState([]);
+    const [budgetForm, setBudgetForm] = useState({
+        companyId: '', budgetName: '', category: '',
+        amount: 0, fiscalYear: '', status: 'ACTIVE'
+    });
+    const [editingBudgetId, setEditingBudgetId] = useState(null);
+
+    const fetchBudgets = async () => {
+        try { const res = await axios.get('/budgets'); setBudgets(Array.isArray(res.data) ? res.data : []); } catch (e) { setBudgets([]); }
     };
 
     const handleBudgetSubmit = async (e) => {
@@ -919,22 +932,56 @@ function App() {
             }
             resetBudgetForm();
             fetchBudgets();
+            fetchAllData();
         } catch (error) {
             setMessage({ text: error.response?.data?.error || 'Error!', type: 'danger' });
         } finally { setLoading(false); }
     };
+
     const deleteBudget = async (id) => {
         if (!window.confirm('Delete this budget?')) return;
-        try { await axios.delete(`/budgets/${id}`); setMessage({ text: 'Budget deleted!', type: 'success' }); fetchBudgets(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
+        try { await axios.delete(`/budgets/${id}`); setMessage({ text: 'Budget deleted!', type: 'success' }); fetchBudgets(); fetchAllData(); } catch (e) { setMessage({ text: 'Error deleting!', type: 'danger' }); }
     };
+
     const resetBudgetForm = () => {
         setBudgetForm({ companyId: '', budgetName: '', category: '', amount: 0, fiscalYear: '', status: 'ACTIVE' });
         setEditingBudgetId(null);
     };
 
-    // ============================================================
-    // EXPORT
-    // ============================================================
+    // ==================== FETCH ALL DATA ====================
+    useEffect(() => {
+        fetchAllData();
+    }, []);
+
+    const fetchAllData = async () => {
+        await Promise.all([
+            fetchCustomers(),
+            fetchProducts(),
+            fetchVendors(),
+            fetchInvoices(),
+            fetchPurchaseOrders(),
+            fetchDashboardStats(),
+            fetchSalesReport(),
+            fetchPurchaseReport(),
+            fetchGSTReport(),
+            fetchStockReport(),
+            fetchCustomerReport(),
+            fetchVendorReport(),
+            fetchTrialBalance(),
+            fetchProfitLoss(),
+            fetchEmployees(),
+            fetchLeaves(),
+            fetchBoms(),
+            fetchProductionOrders(),
+            fetchProjects(),
+            fetchTasks(),
+            fetchTimesheets(),
+            fetchCompanies(),
+            fetchBudgets()
+        ]);
+    };
+
+    // ==================== EXPORT FUNCTIONS ====================
     const exportToCSV = (data, filename) => {
         if (!data || data.length === 0) {
             setMessage({ text: 'No data to export!', type: 'warning' });
@@ -961,12 +1008,14 @@ function App() {
         setMessage({ text: 'Exported successfully!', type: 'success' });
     };
 
-    // ============================================================
-    // RENDER HELPERS
-    // ============================================================
+    const exportToExcel = (data, filename) => {
+        exportToCSV(data, filename);
+    };
+
+    // ==================== RENDER HELPERS ====================
     const renderReportCards = (title, value, color, icon) => (
         <div className="col-md-2 col-6 mb-2">
-            <div className={`card stat-card bg-${color} text-white`}>
+            <div className={`card bg-${color} text-white shadow-sm`}>
                 <div className="card-body text-center py-2">
                     <h3>{icon}</h3>
                     <h5>{typeof value === 'number' ? value.toLocaleString() : value}</h5>
@@ -1014,193 +1063,89 @@ function App() {
         );
     };
 
-    // ============================================================
-    // SIDEBAR (Apple + India Theme)
-    // ============================================================
-    const Sidebar = () => (
-        <div className={`sidebar-container ${sidebarOpen ? 'open' : 'closed'}`}
-            style={{
-                width: sidebarOpen ? '260px' : '60px',
-                backgroundColor: isDarkMode ? 'rgba(30, 30, 30, 0.95)' : 'rgba(255, 255, 255, 0.92)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                borderRight: '1px solid rgba(255, 215, 0, 0.15)',
-                boxShadow: isDarkMode ? '0 0 30px rgba(0,0,0,0.5)' : '0 0 30px rgba(0,0,0,0.08)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                position: 'fixed',
-                top: '60px',
-                left: 0,
-                height: 'calc(100vh - 60px)',
-                zIndex: 1040,
-                overflow: 'hidden',
-                paddingTop: '10px'
-            }}
-        >
-            <div className="sidebar-scroll" style={{ overflowY: 'auto', height: '100%', padding: '0 8px' }}>
-                {pages.map((page) => (
-                    <div key={page.id} className="sidebar-page-group" style={{ marginBottom: '4px' }}>
-                        <div
-                            className={`sidebar-page-header ${activePage === page.id ? 'active' : ''}`}
-                            onClick={() => changePage(page.id)}
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                padding: '10px 12px',
-                                borderRadius: '12px',
-                                cursor: 'pointer',
-                                backgroundColor: activePage === page.id ? 'rgba(255, 215, 0, 0.15)' : 'transparent',
-                                borderLeft: activePage === page.id ? '3px solid #FF9933' : '3px solid transparent',
-                                transition: 'all 0.2s ease'
-                            }}
-                        >
-                            <span style={{ fontSize: sidebarOpen ? '14px' : '12px', fontWeight: activePage === page.id ? '600' : '400' }}>
-                                {page.icon} {sidebarOpen && page.name}
-                            </span>
-                            {sidebarOpen && (
-                                <span style={{ fontSize: '10px', color: '#888' }}>
-                                    {activePage === page.id ? '●' : '○'}
-                                </span>
-                            )}
-                        </div>
-
-                        {activePage === page.id && (
-                            <div className="sidebar-page-items" style={{ paddingLeft: sidebarOpen ? '8px' : '0' }}>
-                                {page.tabs.map((tab) => (
-                                    <button
-                                        key={tab.id}
-                                        className={`sidebar-tab-btn ${activeTab === tab.id ? 'active' : ''}`}
-                                        onClick={() => setActiveTab(tab.id)}
-                                        style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            width: '100%',
-                                            padding: sidebarOpen ? '6px 12px' : '6px 8px',
-                                            margin: '2px 0',
-                                            borderRadius: '8px',
-                                            border: 'none',
-                                            background: activeTab === tab.id ? 'rgba(255, 215, 0, 0.12)' : 'transparent',
-                                            color: activeTab === tab.id ? '#FF9933' : (isDarkMode ? '#ccc' : '#555'),
-                                            fontSize: sidebarOpen ? '12px' : '10px',
-                                            fontWeight: activeTab === tab.id ? '500' : '400',
-                                            cursor: 'pointer',
-                                            transition: 'all 0.15s ease',
-                                            whiteSpace: 'normal',
-                                            wordWrap: 'break-word',
-                                            overflowWrap: 'break-word',
-                                            textAlign: 'left',
-                                            lineHeight: '1.3'
-                                        }}
-                                    >
-                                        <span style={{ fontSize: '13px', width: '24px', flexShrink: 0 }}>{tab.label.split(' ')[0]}</span>
-                                        {sidebarOpen && <span style={{ fontSize: '12px' }}>{tab.label}</span>}
-                                    </button>
-                                ))}
-                            </div>
-                        )}
-                    </div>
+    // ==================== SIDEBARS ====================
+    const LeftSidebar = () => (
+        <div className={`position-fixed top-0 start-0 vh-100 bg-dark text-white transition-all duration-300 ease-in-out ${leftOpen ? 'width-220' : 'width-60'}`} 
+             style={{ width: leftOpen ? '220px' : '60px', zIndex: 1040, paddingTop: '70px', overflow: 'hidden', boxShadow: '2px 0 15px rgba(0,0,0,0.3)' }}>
+            <div className="d-flex flex-column h-100">
+                {leftTabs.map((tab) => (
+                    <button key={tab.id}
+                        className={`btn w-100 text-start border-0 rounded-0 py-3 px-3 ${activeTab === tab.id ? 'bg-primary text-white' : 'text-white-50 hover-bg-primary-20'} transition-all duration-200`}
+                        onClick={() => setActiveTab(tab.id)}
+                        style={{ backgroundColor: activeTab === tab.id ? '#0d6efd' : 'transparent', fontSize: leftOpen ? '13px' : '11px' }}>
+                        <span style={{ fontSize: '18px', display: 'inline-block', width: '28px' }}>{tab.icon}</span>
+                        {leftOpen && <span className="ms-2">{tab.label}</span>}
+                    </button>
                 ))}
             </div>
         </div>
     );
 
-    // ============================================================
-    // NAVBAR (Apple + India Theme)
-    // ============================================================
-    const Navbar = () => (
-        <nav style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '60px',
-            zIndex: 1050,
-            backgroundColor: isDarkMode ? 'rgba(20, 20, 20, 0.92)' : 'rgba(255, 255, 255, 0.92)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            borderBottom: '1px solid rgba(255, 215, 0, 0.15)',
-            display: 'flex',
-            alignItems: 'center',
-            padding: '0 20px',
-            boxShadow: isDarkMode ? '0 2px 20px rgba(0,0,0,0.3)' : '0 2px 20px rgba(0,0,0,0.06)'
-        }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
-                <button onClick={toggleSidebar} style={{
-                    background: 'none',
-                    border: 'none',
-                    fontSize: '20px',
-                    cursor: 'pointer',
-                    color: isDarkMode ? '#fff' : '#333',
-                    padding: '4px'
-                }}>☰</button>
-                <span style={{
-                    fontSize: '20px',
-                    fontWeight: '700',
-                    background: 'linear-gradient(135deg, #FF9933 0%, #138808 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                }}>🇮🇳 BHARAT ERP 2026</span>
+    const RightSidebar = () => (
+        <div className={`position-fixed top-0 end-0 vh-100 bg-dark text-white transition-all duration-300 ease-in-out ${rightOpen ? 'width-220' : 'width-60'}`}
+             style={{ width: rightOpen ? '220px' : '60px', zIndex: 1040, paddingTop: '70px', overflow: 'hidden', boxShadow: '-2px 0 15px rgba(0,0,0,0.3)' }}>
+            <div className="d-flex flex-column h-100">
+                {rightTabs.map((tab) => (
+                    <button key={tab.id}
+                        className={`btn w-100 text-start border-0 rounded-0 py-3 px-3 ${activeTab === tab.id ? 'bg-primary text-white' : 'text-white-50 hover-bg-primary-20'} transition-all duration-200`}
+                        onClick={() => setActiveTab(tab.id)}
+                        style={{ backgroundColor: activeTab === tab.id ? '#0d6efd' : 'transparent', fontSize: rightOpen ? '13px' : '11px' }}>
+                        <span style={{ fontSize: '18px', display: 'inline-block', width: '28px' }}>{tab.icon}</span>
+                        {rightOpen && <span className="ms-2">{tab.label}</span>}
+                    </button>
+                ))}
             </div>
+        </div>
+    );
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <span style={{ fontSize: '13px', color: isDarkMode ? '#aaa' : '#666' }}>
-                    📅 {formatDate(currentTime)} | 🕐 {formatTime(currentTime)}
-                </span>
-                <button onClick={toggleDarkMode} style={{
-                    background: 'none',
-                    border: 'none',
-                    fontSize: '18px',
-                    cursor: 'pointer',
-                    color: isDarkMode ? '#FFD700' : '#333'
-                }}>{isDarkMode ? '☀️' : '🌙'}</button>
-                <a href={CREATOR.github} target="_blank" rel="noopener noreferrer" style={{ color: isDarkMode ? '#fff' : '#333', fontSize: '18px', textDecoration: 'none' }}>🐙</a>
+    // ==================== NAVBAR ====================
+    const Navbar = () => (
+        <nav className="navbar navbar-dark bg-dark fixed-top shadow-lg" style={{ zIndex: 1050, height: '60px' }}>
+            <div className="container-fluid px-3">
+                <div className="d-flex align-items-center">
+                    <button className="btn btn-outline-light btn-sm me-2" onClick={toggleLeft} style={{ border: 'none', fontSize: '20px' }}>☰</button>
+                    <span className="navbar-brand fw-bold text-warning" style={{ fontSize: '1.2rem' }}>🇮🇳 BHARAT ERP 2026</span>
+                </div>
+                <div className="text-center text-light d-none d-md-block">
+                    <span className="fw-bold">📅 {formatDate(currentTime)}</span>
+                    <span className="mx-2 text-warning">|</span>
+                    <span className="fw-bold text-warning">🕐 {formatTime(currentTime)}</span>
+                </div>
+                <div className="d-flex align-items-center">
+                    <span className="text-light me-2 d-none d-sm-block">👤 {CREATOR.name}</span>
+                    <button className="btn btn-outline-light btn-sm" onClick={toggleRight} style={{ border: 'none', fontSize: '20px' }}>☰</button>
+                </div>
             </div>
         </nav>
     );
 
-    // ============================================================
-    // FOOTER
-    // ============================================================
+    // ==================== FOOTER ====================
     const Footer = () => (
-        <footer style={{
-            borderTop: '1px solid rgba(255, 215, 0, 0.12)',
-            padding: '16px 0',
-            marginTop: '20px',
-            backgroundColor: isDarkMode ? 'rgba(20, 20, 20, 0.6)' : 'rgba(250, 250, 250, 0.6)',
-            backdropFilter: 'blur(10px)'
-        }}>
+        <footer className="bg-dark text-white-50 py-3 mt-auto" style={{ borderTop: '1px solid #444' }}>
             <div className="container-fluid px-4">
                 <div className="row align-items-center">
                     <div className="col-md-4 text-center text-md-start">
-                        <small>🇮🇳 <strong style={{ color: '#FF9933' }}>BHARAT ERP 2026</strong></small>
-                        <br />
-                        <small style={{ color: isDarkMode ? '#aaa' : '#666' }}>Created by: <strong style={{ color: '#138808' }}>{CREATOR.name}</strong></small>
+                        <small>🇮🇳 <strong className="text-warning">BHARAT ERP 2026</strong></small><br />
+                        <small>Created by: <strong className="text-primary">{CREATOR.name}</strong></small>
                     </div>
                     <div className="col-md-4 text-center">
-                        <small style={{ color: isDarkMode ? '#aaa' : '#666' }}>📧 {CREATOR.email}</small>
-                        <br />
-                        <small style={{ color: isDarkMode ? '#888' : '#888' }}>📍 {CREATOR.location}</small>
+                        <small>📞 {CREATOR.phone} | 📧 {CREATOR.email}</small><br />
+                        <small>📍 {CREATOR.location}</small>
                     </div>
                     <div className="col-md-4 text-center text-md-end">
-                        <a href={CREATOR.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: '#0a66c2', textDecoration: 'none', margin: '0 8px' }}>🔗 LinkedIn</a>
-                        <a href={CREATOR.github} target="_blank" rel="noopener noreferrer" style={{ color: isDarkMode ? '#fff' : '#333', textDecoration: 'none', margin: '0 8px' }}>🐙 GitHub</a>
-                        <a href={CREATOR.instagram} target="_blank" rel="noopener noreferrer" style={{ color: '#E4405F', textDecoration: 'none', margin: '0 8px' }}>📸 Instagram</a>
-                        <br />
-                        <small style={{ color: isDarkMode ? '#666' : '#aaa' }}>© 2026 BHARAT ERP | Made in India 🇮🇳</small>
+                        <a href={CREATOR.linkedin} target="_blank" rel="noopener noreferrer" className="text-info text-decoration-none me-2">🔗 LinkedIn</a>
+                        <a href={CREATOR.github} target="_blank" rel="noopener noreferrer" className="text-light text-decoration-none me-2">🐙 GitHub</a>
+                        <a href={CREATOR.instagram} target="_blank" rel="noopener noreferrer" className="text-danger text-decoration-none">📸 Instagram</a><br />
+                        <small className="text-muted">© 2026 BHARAT ERP | Made in India 🇮🇳</small>
                     </div>
                 </div>
             </div>
         </footer>
     );
 
-    // ============================================================
-    // RENDER CONTENT
-    // ============================================================
+    // ==================== RENDER CONTENT ====================
     const renderContent = () => {
-        const currentTab = allTabs.find(t => t.id === activeTab);
-        const tabLabel = currentTab ? currentTab.label : 'Dashboard';
-
-        // Dashboard
+        // DASHBOARD
         if (activeTab === 'dashboard') {
             return (
                 <div>
@@ -1214,8 +1159,8 @@ function App() {
                     </div>
                     <div className="row">
                         <div className="col-md-6">
-                            <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                                <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}>📈 Monthly Sales Trend</div>
+                            <div className="card shadow-sm">
+                                <div className="card-header bg-primary text-white">📈 Monthly Sales Trend</div>
                                 <div className="card-body" style={{ height: '300px' }}>
                                     <ResponsiveContainer width="100%" height="100%">
                                         <AreaChart data={dashboardStats.monthlySales || []}>
@@ -1230,8 +1175,8 @@ function App() {
                             </div>
                         </div>
                         <div className="col-md-6">
-                            <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                                <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}>📊 AI Summary</div>
+                            <div className="card shadow-sm">
+                                <div className="card-header bg-success text-white">📊 AI Summary</div>
                                 <div className="card-body">
                                     <div className="row text-center">
                                         <div className="col-4 border-end py-3"><h5>Agents</h5><h3 className="text-success">{agentResults.length || 0}</h3></div>
@@ -1246,13 +1191,13 @@ function App() {
             );
         }
 
-        // Customers
+        // CUSTOMERS
         if (activeTab === 'customers') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingCustomerId ? '✏️ Edit Customer' : '➕ Add Customer'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-primary text-white"><h5>{editingCustomerId ? '✏️ Edit Customer' : '➕ Add Customer'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleCustomerSubmit}>
                                     <div className="row g-2">
@@ -1275,8 +1220,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>👥 Customers List ({customers.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-primary text-white"><h5>👥 Customers List ({customers.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Code</th><th>Name</th><th>GSTIN</th><th>Phone</th><th>City</th><th>Actions</th></tr></thead>
@@ -1303,13 +1248,13 @@ function App() {
             );
         }
 
-        // Products
+        // PRODUCTS
         if (activeTab === 'products') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingProductId ? '✏️ Edit Product' : '➕ Add Product'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>{editingProductId ? '✏️ Edit Product' : '➕ Add Product'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleProductSubmit}>
                                     <div className="row g-2">
@@ -1332,8 +1277,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📦 Products List ({products.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>📦 Products List ({products.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Code</th><th>Name</th><th>HSN</th><th>GST%</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
@@ -1363,13 +1308,13 @@ function App() {
             );
         }
 
-        // Vendors
+        // VENDORS
         if (activeTab === 'vendors') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingVendorId ? '✏️ Edit Vendor' : '➕ Add Vendor'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>{editingVendorId ? '✏️ Edit Vendor' : '➕ Add Vendor'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleVendorSubmit}>
                                     <div className="row g-2">
@@ -1391,8 +1336,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>🏢 Vendors List ({vendors.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>🏢 Vendors List ({vendors.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Code</th><th>Name</th><th>GSTIN</th><th>Phone</th><th>City</th><th>Actions</th></tr></thead>
@@ -1419,13 +1364,13 @@ function App() {
             );
         }
 
-        // Invoices
+        // INVOICES
         if (activeTab === 'invoices') {
             return (
                 <div>
                     <button className="btn btn-primary mb-3" onClick={() => { resetInvoiceForm(); setShowModal(true); setModalType('invoice'); }}>➕ Create Invoice</button>
-                    <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                        <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📄 Invoices List ({invoices.length})</h5></div>
+                    <div className="card shadow-sm">
+                        <div className="card-header bg-primary text-white"><h5>📄 Invoices List ({invoices.length})</h5></div>
                         <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                             <table className="table table-striped">
                                 <thead><tr><th>Number</th><th>Date</th><th>Customer</th><th>Total</th><th>GST</th><th>Grand Total</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1450,13 +1395,13 @@ function App() {
             );
         }
 
-        // Purchase Orders
+        // PURCHASE ORDERS
         if (activeTab === 'purchase-orders') {
             return (
                 <div>
                     <button className="btn btn-success mb-3" onClick={() => { resetPOForm(); setShowModal(true); setModalType('po'); }}>➕ Create Purchase Order</button>
-                    <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                        <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📋 Purchase Orders List ({purchaseOrders.length})</h5></div>
+                    <div className="card shadow-sm">
+                        <div className="card-header bg-success text-white"><h5>📋 Purchase Orders List ({purchaseOrders.length})</h5></div>
                         <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                             <table className="table table-striped">
                                 <thead><tr><th>PO No</th><th>Date</th><th>Vendor</th><th>Total</th><th>GST</th><th>Grand Total</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1481,48 +1426,13 @@ function App() {
             );
         }
 
-        // Reports
-        if (['sales-report', 'purchase-report', 'stock-report', 'gst-report', 'customer-report', 'vendor-report', 'trial-balance', 'profit-loss'].includes(activeTab)) {
-            return (
-                <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                    <div className="card-header bg-primary text-white d-flex justify-content-between align-items-center" style={{ borderRadius: '16px 16px 0 0' }}>
-                        <h5>📊 {tabLabel}</h5>
-                        <button className="btn btn-light btn-sm" onClick={() => setMessage({ text: 'Export feature available!', type: 'success' })}>📊 Export</button>
-                    </div>
-                    <div className="card-body">
-                        <div className="text-center text-muted py-5">
-                            <h5>📊 {tabLabel}</h5>
-                            <p>All report data is being fetched from the backend.</p>
-                            <p className="text-success">✅ Phase 5 Complete - AI-Powered Reports</p>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-
-        // AI Features
-        if (['chat', 'search', 'auto-invoice', 'anomaly', 'predict', 'qr', 'extract', 'agents'].includes(activeTab)) {
-            return (
-                <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                    <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>🤖 {tabLabel}</h5></div>
-                    <div className="card-body">
-                        <div className="text-center text-muted py-5">
-                            <h5>🧠 AI Features Ready</h5>
-                            <p>AI Chat, Search, Auto Invoice, Anomaly Detection, Predictions, QR, Extraction, Agents</p>
-                            <p className="text-success">✅ Phase 6 Complete - AI-Powered ERP</p>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-
-        // HR - Employees
+        // ==================== EMPLOYEES ====================
         if (activeTab === 'hr-employees') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-info text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingEmployeeId ? '✏️ Edit Employee' : '➕ Add Employee'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-info text-white"><h5>{editingEmployeeId ? '✏️ Edit Employee' : '➕ Add Employee'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleEmployeeSubmit}>
                                     <div className="row g-2">
@@ -1561,8 +1471,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-info text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>👨‍💼 Employees List ({employees.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-info text-white"><h5>👨‍💼 Employees List ({employees.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Department</th><th>Designation</th><th>Salary</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1591,13 +1501,13 @@ function App() {
             );
         }
 
-        // HR - Leaves
+        // LEAVES
         if (activeTab === 'hr-leaves') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingLeaveId ? '✏️ Edit Leave' : '➕ Add Leave'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>{editingLeaveId ? '✏️ Edit Leave' : '➕ Add Leave'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleLeaveSubmit}>
                                     <div className="row g-2">
@@ -1628,8 +1538,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>📅 Leaves List ({leaves.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>📅 Leaves List ({leaves.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Employee</th><th>Type</th><th>Start</th><th>End</th><th>Days</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1659,13 +1569,13 @@ function App() {
             );
         }
 
-        // Manufacturing - BOM
+        // BOM
         if (activeTab === 'mfg-bom') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingBomId ? '✏️ Edit BOM' : '➕ Add BOM'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>{editingBomId ? '✏️ Edit BOM' : '➕ Add BOM'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleBomSubmit}>
                                     <div className="row g-2">
@@ -1694,8 +1604,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📋 BOM List ({boms.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>📋 BOM List ({boms.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Product</th><th>BOM Name</th><th>Version</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1721,13 +1631,13 @@ function App() {
             );
         }
 
-        // Manufacturing - Production
+        // PRODUCTION ORDERS
         if (activeTab === 'mfg-production') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-danger text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingProductionId ? '✏️ Edit Production' : '➕ Add Production Order'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-danger text-white"><h5>{editingProductionId ? '✏️ Edit Production' : '➕ Add Production Order'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleProductionSubmit}>
                                     <div className="row g-2">
@@ -1766,8 +1676,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-danger text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>🏭 Production Orders ({productionOrders.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-danger text-white"><h5>🏭 Production Orders ({productionOrders.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Product</th><th>Qty</th><th>Start</th><th>End</th><th>Status</th><th>Priority</th><th>Actions</th></tr></thead>
@@ -1795,13 +1705,13 @@ function App() {
             );
         }
 
-        // Projects
+        // PROJECTS
         if (activeTab === 'projects') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingProjectId ? '✏️ Edit Project' : '➕ Add Project'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-primary text-white"><h5>{editingProjectId ? '✏️ Edit Project' : '➕ Add Project'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleProjectSubmit}>
                                     <div className="row g-2">
@@ -1836,8 +1746,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📊 Projects List ({projects.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-primary text-white"><h5>📊 Projects List ({projects.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Code</th><th>Name</th><th>Client</th><th>Budget</th><th>Status</th><th>Priority</th><th>Actions</th></tr></thead>
@@ -1865,13 +1775,13 @@ function App() {
             );
         }
 
-        // Tasks
+        // TASKS
         if (activeTab === 'tasks') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingTaskId ? '✏️ Edit Task' : '➕ Add Task'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>{editingTaskId ? '✏️ Edit Task' : '➕ Add Task'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleTaskSubmit}>
                                     <div className="row g-2">
@@ -1908,8 +1818,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-success text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>✅ Tasks List ({tasks.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-success text-white"><h5>✅ Tasks List ({tasks.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Task</th><th>Project</th><th>Assigned To</th><th>Due Date</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1936,13 +1846,13 @@ function App() {
             );
         }
 
-        // Timesheets
+        // TIMESHEETS
         if (activeTab === 'timesheets') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-info text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingTimesheetId ? '✏️ Edit Timesheet' : '➕ Add Timesheet'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-info text-white"><h5>{editingTimesheetId ? '✏️ Edit Timesheet' : '➕ Add Timesheet'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleTimesheetSubmit}>
                                     <div className="row g-2">
@@ -1971,8 +1881,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-info text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>⏱️ Timesheets ({timesheets.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-info text-white"><h5>⏱️ Timesheets ({timesheets.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Employee</th><th>Task</th><th>Date</th><th>Hours</th><th>Status</th><th>Actions</th></tr></thead>
@@ -1999,13 +1909,13 @@ function App() {
             );
         }
 
-        // Companies
+        // COMPANIES
         if (activeTab === 'companies') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-dark text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingCompanyId ? '✏️ Edit Company' : '➕ Add Company'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-dark text-white"><h5>{editingCompanyId ? '✏️ Edit Company' : '➕ Add Company'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleCompanySubmit}>
                                     <div className="row g-2">
@@ -2043,8 +1953,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-dark text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>🏢 Companies ({companies.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-dark text-white"><h5>🏢 Companies ({companies.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Code</th><th>Name</th><th>GST</th><th>City</th><th>Currency</th><th>Status</th><th>Actions</th></tr></thead>
@@ -2072,13 +1982,13 @@ function App() {
             );
         }
 
-        // Budgets
+        // BUDGETS
         if (activeTab === 'budgets') {
             return (
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>{editingBudgetId ? '✏️ Edit Budget' : '➕ Add Budget'}</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>{editingBudgetId ? '✏️ Edit Budget' : '➕ Add Budget'}</h5></div>
                             <div className="card-body">
                                 <form onSubmit={handleBudgetSubmit}>
                                     <div className="row g-2">
@@ -2118,8 +2028,8 @@ function App() {
                         </div>
                     </div>
                     <div className="col-md-8">
-                        <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                            <div className="card-header bg-warning text-dark" style={{ borderRadius: '16px 16px 0 0' }}><h5>💰 Budgets ({budgets.length})</h5></div>
+                        <div className="card shadow-sm">
+                            <div className="card-header bg-warning text-dark"><h5>💰 Budgets ({budgets.length})</h5></div>
                             <div className="card-body" style={{ maxHeight: '500px', overflow: 'auto' }}>
                                 <table className="table table-striped table-sm">
                                     <thead><tr><th>Name</th><th>Company</th><th>Category</th><th>Amount</th><th>Fiscal Year</th><th>Status</th><th>Actions</th></tr></thead>
@@ -2147,14 +2057,540 @@ function App() {
             );
         }
 
-        // Default
+        // ==================== REPORTS ====================
+        if (activeTab === 'sales-report') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5>📈 Sales Report</h5>
+                        <div>
+                            <button className="btn btn-light btn-sm me-2" onClick={() => exportToExcel(salesReport.invoices || [], 'Sales_Report')}>📊 Excel</button>
+                            <button className="btn btn-light btn-sm" onClick={() => exportToCSV(salesReport.invoices || [], 'Sales_Report')}>📄 CSV</button>
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        <div className="row g-3 mb-3">
+                            <div className="col-md-3"><div className="card bg-primary text-white"><div className="card-body text-center"><h6>Total Invoices</h6><h3>{salesReport.totalInvoices || 0}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-success text-white"><div className="card-body text-center"><h6>Taxable Amount</h6><h3>₹{(salesReport.totalTaxable || 0).toLocaleString()}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-warning text-dark"><div className="card-body text-center"><h6>Total GST</h6><h3>₹{(salesReport.totalGst || 0).toLocaleString()}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-danger text-white"><div className="card-body text-center"><h6>Grand Total</h6><h3>₹{(salesReport.totalGrand || 0).toLocaleString()}</h3></div></div></div>
+                        </div>
+                        {renderTable(salesReport.invoices || [], [
+                            { key: 'invoiceNumber', label: 'Invoice No' },
+                            { key: 'date', label: 'Date' },
+                            { key: 'customer', label: 'Customer' },
+                            { key: 'taxable', label: 'Taxable', format: v => `₹${v}` },
+                            { key: 'gst', label: 'GST', format: v => `₹${v}` },
+                            { key: 'grandTotal', label: 'Grand Total', format: v => `₹${v}` }
+                        ])}
+                    </div>
+                </div>
+            );
+        }
+
+        if (activeTab === 'purchase-report') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                        <h5>📉 Purchase Report</h5>
+                        <div>
+                            <button className="btn btn-light btn-sm me-2" onClick={() => exportToExcel(purchaseReport.purchaseOrders || [], 'Purchase_Report')}>📊 Excel</button>
+                            <button className="btn btn-light btn-sm" onClick={() => exportToCSV(purchaseReport.purchaseOrders || [], 'Purchase_Report')}>📄 CSV</button>
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        <div className="row g-3 mb-3">
+                            <div className="col-md-3"><div className="card bg-success text-white"><div className="card-body text-center"><h6>Total POs</h6><h3>{purchaseReport.totalPOs || 0}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-info text-white"><div className="card-body text-center"><h6>Taxable Amount</h6><h3>₹{(purchaseReport.totalTaxable || 0).toLocaleString()}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-warning text-dark"><div className="card-body text-center"><h6>Total GST</h6><h3>₹{(purchaseReport.totalGst || 0).toLocaleString()}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-danger text-white"><div className="card-body text-center"><h6>Grand Total</h6><h3>₹{(purchaseReport.totalGrand || 0).toLocaleString()}</h3></div></div></div>
+                        </div>
+                        {renderTable(purchaseReport.purchaseOrders || [], [
+                            { key: 'poNumber', label: 'PO No' },
+                            { key: 'date', label: 'Date' },
+                            { key: 'vendor', label: 'Vendor' },
+                            { key: 'taxable', label: 'Taxable', format: v => `₹${v}` },
+                            { key: 'gst', label: 'GST', format: v => `₹${v}` },
+                            { key: 'grandTotal', label: 'Grand Total', format: v => `₹${v}` },
+                            { key: 'status', label: 'Status' }
+                        ])}
+                    </div>
+                </div>
+            );
+        }
+
+        if (activeTab === 'stock-report') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                        <h5>📦 Stock Report</h5>
+                        <div>
+                            <button className="btn btn-light btn-sm me-2" onClick={() => exportToExcel(stockReport.stockData || [], 'Stock_Report')}>📊 Excel</button>
+                            <button className="btn btn-light btn-sm" onClick={() => exportToCSV(stockReport.stockData || [], 'Stock_Report')}>📄 CSV</button>
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        <div className="row g-3 mb-3">
+                            <div className="col-md-4"><div className="card bg-primary text-white"><div className="card-body text-center"><h6>Total Items</h6><h3>{stockReport.totalItems || 0}</h3></div></div></div>
+                            <div className="col-md-4"><div className="card bg-success text-white"><div className="card-body text-center"><h6>Total Value</h6><h3>₹{(stockReport.totalValue || 0).toLocaleString()}</h3></div></div></div>
+                            <div className="col-md-4"><div className="card bg-danger text-white"><div className="card-body text-center"><h6>Low Stock Items</h6><h3>{stockReport.lowStockItems || 0}</h3></div></div></div>
+                        </div>
+                        <h6 className="text-danger">⚠️ Low Stock Alert</h6>
+                        {renderTable(stockReport.lowStockList || [], [
+                            { key: 'code', label: 'Code' },
+                            { key: 'name', label: 'Product' },
+                            { key: 'stock', label: 'Current Stock' },
+                            { key: 'minStock', label: 'Min Stock' }
+                        ])}
+                        <h6 className="mt-3">📦 All Stock</h6>
+                        {renderTable(stockReport.stockData || [], [
+                            { key: 'code', label: 'Code' },
+                            { key: 'name', label: 'Product' },
+                            { key: 'stock', label: 'Stock' },
+                            { key: 'minStock', label: 'Min Stock' },
+                            { key: 'value', label: 'Value', format: v => `₹${v}` },
+                            { key: 'status', label: 'Status' }
+                        ])}
+                    </div>
+                </div>
+            );
+        }
+
+        if (activeTab === 'gst-report') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+                        <h5>🧾 GST Report</h5>
+                        <div>
+                            <button className="btn btn-dark btn-sm me-2" onClick={() => exportToExcel([gstReport], 'GST_Report')}>📊 Excel</button>
+                            <button className="btn btn-dark btn-sm" onClick={() => exportToCSV([gstReport], 'GST_Report')}>📄 CSV</button>
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        <div className="row g-3 mb-3">
+                            <div className="col-md-3"><div className="card bg-primary text-white"><div className="card-body text-center"><h6>Total Invoices</h6><h3>{gstReport.totalInvoices || 0}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-danger text-white"><div className="card-body text-center"><h6>Output GST</h6><h3>₹{(gstReport.outputGST || 0).toLocaleString()}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-success text-white"><div className="card-body text-center"><h6>Input GST</h6><h3>₹{(gstReport.inputGST || 0).toLocaleString()}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-warning text-dark"><div className="card-body text-center"><h6>Net GST Payable</h6><h3>₹{(gstReport.netGST || 0).toLocaleString()}</h3></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        if (activeTab === 'customer-report') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5>👥 Customer Report</h5>
+                        <div>
+                            <button className="btn btn-light btn-sm me-2" onClick={() => exportToExcel(customerReport.customers || [], 'Customer_Report')}>📊 Excel</button>
+                            <button className="btn btn-light btn-sm" onClick={() => exportToCSV(customerReport.customers || [], 'Customer_Report')}>📄 CSV</button>
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        <div className="row g-3 mb-3">
+                            <div className="col-md-6"><div className="card bg-primary text-white"><div className="card-body text-center"><h6>Total Customers</h6><h3>{customerReport.totalCustomers || 0}</h3></div></div></div>
+                            <div className="col-md-6"><div className="card bg-success text-white"><div className="card-body text-center"><h6>Total Sales</h6><h3>₹{(customerReport.totalSales || 0).toLocaleString()}</h3></div></div></div>
+                        </div>
+                        {renderTable(customerReport.customers || [], [
+                            { key: 'code', label: 'Code' },
+                            { key: 'name', label: 'Name' },
+                            { key: 'gstin', label: 'GSTIN' },
+                            { key: 'phone', label: 'Phone' },
+                            { key: 'city', label: 'City' },
+                            { key: 'totalSales', label: 'Total Sales', format: v => `₹${v}` }
+                        ])}
+                    </div>
+                </div>
+            );
+        }
+
+        if (activeTab === 'vendor-report') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                        <h5>🏢 Vendor Report</h5>
+                        <div>
+                            <button className="btn btn-light btn-sm me-2" onClick={() => exportToExcel(vendorReport.vendors || [], 'Vendor_Report')}>📊 Excel</button>
+                            <button className="btn btn-light btn-sm" onClick={() => exportToCSV(vendorReport.vendors || [], 'Vendor_Report')}>📄 CSV</button>
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        <div className="row g-3 mb-3">
+                            <div className="col-md-6"><div className="card bg-primary text-white"><div className="card-body text-center"><h6>Total Vendors</h6><h3>{vendorReport.totalVendors || 0}</h3></div></div></div>
+                            <div className="col-md-6"><div className="card bg-danger text-white"><div className="card-body text-center"><h6>Total Purchase</h6><h3>₹{(vendorReport.totalPurchase || 0).toLocaleString()}</h3></div></div></div>
+                        </div>
+                        {renderTable(vendorReport.vendors || [], [
+                            { key: 'code', label: 'Code' },
+                            { key: 'name', label: 'Name' },
+                            { key: 'gstin', label: 'GSTIN' },
+                            { key: 'phone', label: 'Phone' },
+                            { key: 'city', label: 'City' },
+                            { key: 'totalPurchase', label: 'Total Purchase', format: v => `₹${v}` }
+                        ])}
+                    </div>
+                </div>
+            );
+        }
+
+        if (activeTab === 'trial-balance') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                        <h5>⚖️ Trial Balance</h5>
+                        <div>
+                            <button className="btn btn-light btn-sm me-2" onClick={() => exportToExcel(trialBalance.accounts || [], 'Trial_Balance')}>📊 Excel</button>
+                            <button className="btn btn-light btn-sm" onClick={() => exportToCSV(trialBalance.accounts || [], 'Trial_Balance')}>📄 CSV</button>
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        {renderTable(trialBalance.accounts || [], [
+                            { key: 'code', label: 'Code' },
+                            { key: 'name', label: 'Account Name' },
+                            { key: 'type', label: 'Type' },
+                            { key: 'debit', label: 'Debit', format: v => `₹${v}` },
+                            { key: 'credit', label: 'Credit', format: v => `₹${v}` },
+                            { key: 'balance', label: 'Balance', format: v => `₹${v}` }
+                        ])}
+                        <div className="row mt-3">
+                            <div className="col-md-6"><div className="card bg-primary text-white"><div className="card-body text-center"><h6>Total Debit</h6><h3>₹{(trialBalance.totalDebit || 0).toLocaleString()}</h3></div></div></div>
+                            <div className="col-md-6"><div className="card bg-success text-white"><div className="card-body text-center"><h6>Total Credit</h6><h3>₹{(trialBalance.totalCredit || 0).toLocaleString()}</h3></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        if (activeTab === 'profit-loss') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+                        <h5>💰 Profit & Loss Statement</h5>
+                        <div>
+                            <button className="btn btn-light btn-sm me-2" onClick={() => exportToExcel([profitLoss], 'Profit_Loss')}>📊 Excel</button>
+                            <button className="btn btn-light btn-sm" onClick={() => exportToCSV([profitLoss], 'Profit_Loss')}>📄 CSV</button>
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        <div className="row g-3 mb-3">
+                            <div className="col-md-3"><div className="card bg-success text-white"><div className="card-body text-center"><h6>Total Revenue</h6><h3>₹{(profitLoss.totalRevenue || 0).toLocaleString()}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-danger text-white"><div className="card-body text-center"><h6>Total Expenses</h6><h3>₹{(profitLoss.totalExpenses || 0).toLocaleString()}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-warning text-dark"><div className="card-body text-center"><h6>Gross Profit</h6><h3>₹{(profitLoss.grossProfit || 0).toLocaleString()}</h3></div></div></div>
+                            <div className="col-md-3"><div className="card bg-info text-white"><div className="card-body text-center"><h6>Net Profit</h6><h3>₹{(profitLoss.netProfit || 0).toLocaleString()}</h3></div></div></div>
+                        </div>
+                        <div className="text-center mt-3">
+                            <h4>Profit Margin: {(profitLoss.profitMargin || 0).toFixed(2)}%</h4>
+                            <div className="progress" style={{ height: '30px' }}>
+                                <div className="progress-bar bg-success" style={{ width: `${Math.min(profitLoss.profitMargin || 0, 100)}%` }}>
+                                    {Math.min(profitLoss.profitMargin || 0, 100).toFixed(1)}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // ==================== AI CHAT ====================
+        if (activeTab === 'chat') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-primary text-white"><h5>💬 AI Chat Assistant</h5></div>
+                    <div className="card-body" style={{ height: '500px', overflow: 'auto', display: 'flex', flexDirection: 'column' }}>
+                        {chatMessages.map((msg, i) => (
+                            <div key={i} className={`mb-2 ${msg.sender === 'user' ? 'text-end' : 'text-start'}`}>
+                                <div className={`d-inline-block p-2 rounded ${msg.sender === 'user' ? 'bg-primary text-white' : 'bg-light text-dark'}`} style={{ maxWidth: '80%' }}>
+                                    {msg.text}
+                                </div>
+                            </div>
+                        ))}
+                        {loading && <div className="text-center text-muted">Typing...</div>}
+                    </div>
+                    <div className="card-footer">
+                        <div className="input-group">
+                            <input className="form-control" placeholder="Ask me anything..." value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && sendChat()} />
+                            <button className="btn btn-primary" onClick={sendChat} disabled={loading}>Send</button>
+                        </div>
+                        <div className="mt-2">
+                            {['vendors', 'products', 'sales', 'stock', 'customers', 'help'].map(q => (
+                                <button key={q} className="btn btn-outline-secondary btn-sm me-1 mt-1" onClick={() => { setChatInput(q); setTimeout(sendChat, 100); }}>{q}</button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // ==================== AI SEARCH ====================
+        if (activeTab === 'search') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-success text-white"><h5>🔍 AI-Powered Smart Search</h5></div>
+                    <div className="card-body">
+                        <div className="input-group mb-3">
+                            <input className="form-control" placeholder="Search products, customers, invoices..." value={searchKeyword} onChange={(e) => setSearchKeyword(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSmartSearch()} />
+                            <button className="btn btn-success" onClick={handleSmartSearch} disabled={loading}>🔍 Search</button>
+                        </div>
+                        {searchResults.length > 0 ? (
+                            <div className="table-responsive" style={{ maxHeight: '400px', overflow: 'auto' }}>
+                                <table className="table table-striped">
+                                    <thead><tr><th>Type</th><th>Details</th></tr></thead>
+                                    <tbody>
+                                        {searchResults.map((item, i) => (
+                                            <tr key={i}>
+                                                <td><span className={`badge bg-${item.type === 'Product' ? 'success' : item.type === 'Customer' ? 'primary' : 'warning'}`}>{item.type}</span></td>
+                                                <td>
+                                                    {item.type === 'Product' && `${item.code} - ${item.name} (₹${item.price}) Stock: ${item.stock}`}
+                                                    {item.type === 'Customer' && `${item.code} - ${item.name} (${item.gstin})`}
+                                                    {item.type === 'Invoice' && `${item.number} - ${item.customer} (₹${item.amount})`}
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        ) : (
+                            <div className="text-center text-muted py-3">Search for products, customers, or invoices</div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        // ==================== AUTO INVOICE ====================
+        if (activeTab === 'auto-invoice') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-warning text-dark"><h5>⚡ AI Auto Invoice Generator</h5></div>
+                    <div className="card-body">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <label className="form-label">Customer Name</label>
+                                <input className="form-control" placeholder="Enter customer name" value={autoInvoiceData.customerName} onChange={(e) => setAutoInvoiceData({ ...autoInvoiceData, customerName: e.target.value })} />
+                                <div className="mt-3">
+                                    <h6>Items</h6>
+                                    {autoInvoiceData.items.map((item, idx) => (
+                                        <div key={idx} className="row g-2 mb-2">
+                                            <div className="col-5"><input className="form-control form-control-sm" placeholder="Product" value={item.name} onChange={(e) => updateAutoInvoiceItem(idx, 'name', e.target.value)} /></div>
+                                            <div className="col-2"><input className="form-control form-control-sm" type="number" placeholder="Qty" value={item.qty} onChange={(e) => updateAutoInvoiceItem(idx, 'qty', parseFloat(e.target.value))} /></div>
+                                            <div className="col-3"><input className="form-control form-control-sm" type="number" placeholder="Rate" value={item.rate} onChange={(e) => updateAutoInvoiceItem(idx, 'rate', parseFloat(e.target.value))} /></div>
+                                            <div className="col-2"><button className="btn btn-danger btn-sm" onClick={() => removeAutoInvoiceItem(idx)}>✕</button></div>
+                                        </div>
+                                    ))}
+                                    <button className="btn btn-outline-primary btn-sm" onClick={addAutoInvoiceItem}>+ Add Item</button>
+                                </div>
+                                <button className="btn btn-warning mt-3 w-100" onClick={handleAutoInvoice} disabled={loading}>⚡ Generate Invoice</button>
+                            </div>
+                            <div className="col-md-6">
+                                {autoInvoiceResult && (
+                                    <div className="card bg-light">
+                                        <div className="card-body">
+                                            <h6>✅ Invoice Generated</h6>
+                                            <p><strong>Invoice:</strong> {autoInvoiceResult.invoiceNumber}</p>
+                                            <p><strong>Customer:</strong> {autoInvoiceResult.customerName}</p>
+                                            <p><strong>Taxable:</strong> ₹{autoInvoiceResult.taxableAmount}</p>
+                                            <p><strong>GST:</strong> ₹{autoInvoiceResult.totalGst}</p>
+                                            <p><strong>Grand Total:</strong> <span className="fw-bold text-success">₹{autoInvoiceResult.grandTotal}</span></p>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // ==================== ANOMALY ====================
+        if (activeTab === 'anomaly') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-danger text-white"><h5>🛡️ AI Anomaly Detection</h5></div>
+                    <div className="card-body">
+                        <button className="btn btn-danger mb-3" onClick={handleAnomalyDetection} disabled={loading}>🔍 Scan for Anomalies</button>
+                        {anomalies.length > 0 ? (
+                            <div className="table-responsive">
+                                <table className="table table-striped">
+                                    <thead><tr><th>Type</th><th>Details</th><th>Risk Level</th></tr></thead>
+                                    <tbody>
+                                        {anomalies.map((a, i) => (
+                                            <tr key={i}>
+                                                <td><span className="badge bg-danger">{a.type}</span></td>
+                                                <td>{a.invoice ? `Invoice: ${a.invoice} (₹${a.amount})` : a.product ? `Product: ${a.product} (Stock: ${a.stock})` : 'N/A'}</td>
+                                                <td><span className={`badge bg-${a.risk === 'HIGH' ? 'danger' : 'warning'}`}>{a.risk}</span></td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        ) : (
+                            <div className="text-center text-muted py-3">Click scan to detect anomalies</div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        // ==================== PREDICT ====================
+        if (activeTab === 'predict') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-success text-white"><h5>📊 AI Predictive Analytics</h5></div>
+                    <div className="card-body">
+                        <button className="btn btn-success mb-3" onClick={handlePredict} disabled={loading}>📈 Predict Sales (7 Days)</button>
+                        {prediction && (
+                            <div className="row">
+                                <div className="col-md-6"><div className="card bg-primary text-white"><div className="card-body text-center"><h6>Average Daily Sales</h6><h3>₹{prediction.avgDailySales?.toFixed(2) || 0}</h3></div></div></div>
+                                <div className="col-md-6"><div className="card bg-success text-white"><div className="card-body text-center"><h6>Predicted Sales (7 Days)</h6><h3>₹{prediction.predictedSales?.toFixed(2) || 0}</h3><small>Confidence: {(prediction.confidence || 0) * 100}%</small></div></div></div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        // ==================== QR SCANNER ====================
+        if (activeTab === 'qr') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-info text-white"><h5>📱 QR Code Scanner</h5></div>
+                    <div className="card-body">
+                        <div className="input-group mb-3">
+                            <input className="form-control" placeholder="Enter QR code data (PROD-XXX or INV-XXX)" value={qrData} onChange={(e) => setQrData(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleQRScan()} />
+                            <button className="btn btn-info" onClick={handleQRScan} disabled={loading}>📱 Scan</button>
+                        </div>
+                        {qrResult && (
+                            <div className="card bg-light">
+                                <div className="card-body">
+                                    <h6>📋 Scan Result</h6>
+                                    <p><strong>Type:</strong> <span className={`badge bg-${qrResult.type === 'PRODUCT' ? 'success' : qrResult.type === 'INVOICE' ? 'warning' : 'secondary'}`}>{qrResult.type || 'UNKNOWN'}</span></p>
+                                    <p><strong>Message:</strong> {qrResult.message}</p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        // ==================== EXTRACT ====================
+        if (activeTab === 'extract') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-secondary text-white"><h5>📄 AI Smart Data Extraction</h5></div>
+                    <div className="card-body">
+                        <div className="mb-3">
+                            <label className="form-label">Paste Invoice/Text Data</label>
+                            <textarea className="form-control" rows="5" placeholder="Paste invoice text here..." value={extractText} onChange={(e) => setExtractText(e.target.value)}></textarea>
+                            <button className="btn btn-secondary mt-2" onClick={handleExtract} disabled={loading}>📄 Extract Data</button>
+                        </div>
+                        {extractResult && (
+                            <div className="card bg-light">
+                                <div className="card-body">
+                                    <h6>📋 Extracted Data</h6>
+                                    <p><strong>Customer:</strong> {extractResult.customerName || 'N/A'}</p>
+                                    <p><strong>GSTIN:</strong> {extractResult.gstin || 'N/A'}</p>
+                                    <p><strong>Amount:</strong> {extractResult.amount ? `₹${extractResult.amount}` : 'N/A'}</p>
+                                    <p><strong>Confidence:</strong> {(extractResult.confidence || 0) * 100}%</p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        // ==================== AI AGENTS ====================
+        if (activeTab === 'agents') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-primary text-white"><h5>🤖 AI Agents - Auto Approval & Tasks</h5></div>
+                    <div className="card-body">
+                        <button className="btn btn-primary mb-3" onClick={handleRunAgents} disabled={loading}>▶️ Run AI Agents</button>
+                        {agentResults.length > 0 ? (
+                            <div className="row">
+                                {agentResults.map((agent, i) => (
+                                    <div key={i} className="col-md-6 mb-2">
+                                        <div className={`card ${agent.status === 'SUCCESS' ? 'border-success' : 'border-danger'}`}>
+                                            <div className="card-body">
+                                                <h6>🤖 {agent.agent}</h6>
+                                                <p className="mb-1">Status: <span className={`badge bg-${agent.status === 'SUCCESS' ? 'success' : 'danger'}`}>{agent.status}</span></p>
+                                                {agent.approved !== undefined && <p className="mb-0">✅ Approved: {agent.approved} invoices</p>}
+                                                {agent.lowStockCount !== undefined && <p className="mb-0">📦 Low Stock: {agent.lowStockCount} items</p>}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="text-center text-muted py-3">Run agents to see results</div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        // ==================== SETTINGS ====================
+        if (activeTab === 'settings') {
+            return (
+                <div className="card shadow-sm">
+                    <div className="card-header bg-dark text-white"><h5>⚙️ Settings</h5></div>
+                    <div className="card-body">
+                        <div className="text-center py-5">
+                            <h4>⚙️ Application Settings</h4>
+                            <p className="text-muted">Configure your application preferences</p>
+                            <div className="row mt-4">
+                                <div className="col-md-6">
+                                    <div className="card bg-light">
+                                        <div className="card-body">
+                                            <h6>🌓 Theme</h6>
+                                            <button className="btn btn-primary" onClick={() => setIsDarkMode(!isDarkMode)}>
+                                                {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="card bg-light">
+                                        <div className="card-body">
+                                            <h6>👤 Profile</h6>
+                                            <p><strong>Name:</strong> {CREATOR.name}</p>
+                                            <p><strong>Email:</strong> {CREATOR.email}</p>
+                                            <p><strong>Phone:</strong> {CREATOR.phone}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row mt-3">
+                                <div className="col-md-12">
+                                    <div className="card bg-light">
+                                        <div className="card-body">
+                                            <h6>📊 System Info</h6>
+                                            <p><strong>Version:</strong> 1.0.0</p>
+                                            <p><strong>Created By:</strong> {CREATOR.name}</p>
+                                            <p><strong>College:</strong> {CREATOR.college}</p>
+                                            <p><strong>University:</strong> {CREATOR.university}</p>
+                                            <p><strong>Location:</strong> {CREATOR.location}</p>
+                                            <p><strong>© 2026 BHARAT ERP | Made in India 🇮🇳</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // Default fallback
         return (
-            <div className="card shadow-sm" style={{ borderRadius: '16px', border: 'none' }}>
-                <div className="card-header bg-primary text-white" style={{ borderRadius: '16px 16px 0 0' }}><h5>📋 {tabLabel}</h5></div>
+            <div className="card shadow-sm">
+                <div className="card-header bg-primary text-white"><h5>📋 {activeTab.replace('-', ' ').toUpperCase()}</h5></div>
                 <div className="card-body">
                     <div className="text-center py-5">
-                        <h4>🚀 Module Ready: {tabLabel}</h4>
-                        <p className="text-muted">Phase 1-25 Complete ✅</p>
+                        <h4>🚀 Module Ready</h4>
+                        <p className="text-muted">Phase 1-10 Complete ✅</p>
                         <p className="text-success">All modules with full CRUD operations</p>
                         <p className="text-warning">👨‍💻 Created by: {CREATOR.name}</p>
                     </div>
@@ -2163,44 +2599,38 @@ function App() {
         );
     };
 
-    // ============================================================
-    // MAIN RETURN
-    // ============================================================
+    // ==================== MAIN RETURN ====================
     return (
-        <div style={{
-            minHeight: '100vh',
-            backgroundColor: isDarkMode ? '#0a0a0a' : '#f5f5f7',
-            color: isDarkMode ? '#f5f5f7' : '#1d1d1f',
-            fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-        }}>
+        <div style={{ minHeight: '100vh', backgroundColor: '#f4f6f9' }}>
             <Navbar />
-            <Sidebar />
-
-            <main style={{
-                marginLeft: sidebarOpen ? '260px' : '60px',
-                paddingTop: '80px',
-                paddingLeft: '20px',
-                paddingRight: '20px',
-                paddingBottom: '20px',
-                minHeight: 'calc(100vh - 60px)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+            <LeftSidebar />
+            <RightSidebar />
+            
+            <main style={{ 
+                marginLeft: leftOpen ? '220px' : '60px',
+                marginRight: rightOpen ? '220px' : '60px',
+                paddingTop: '60px',
+                minHeight: '100vh',
+                transition: 'all 0.3s ease-in-out'
             }}>
-                {message.text && (
-                    <div className={`alert alert-${message.type} alert-dismissible`} style={{ borderRadius: '12px', border: 'none' }}>
-                        {message.text}
-                        <button className="btn-close" onClick={() => setMessage({ text: '', type: '' })}></button>
-                    </div>
-                )}
-                {renderContent()}
+                <div className="container-fluid p-4">
+                    {message.text && (
+                        <div className={`alert alert-${message.type} alert-dismissible`}>
+                            {message.text}
+                            <button className="btn-close" onClick={() => setMessage({ text: '', type: '' })}></button>
+                        </div>
+                    )}
+                    {renderContent()}
+                </div>
                 <Footer />
             </main>
 
             {/* ===== MODAL ===== */}
             {showModal && (
-                <div className="modal show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}>
+                <div className="modal show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
                     <div className="modal-dialog modal-lg modal-dialog-scrollable">
-                        <div className="modal-content" style={{ borderRadius: '20px', border: 'none' }}>
-                            <div className="modal-header" style={{ borderBottom: '1px solid rgba(255,215,0,0.2)' }}>
+                        <div className="modal-content">
+                            <div className="modal-header">
                                 <h5>{modalType === 'invoice' ? '📄 Create Invoice' : '📋 Create Purchase Order'}</h5>
                                 <button className="btn-close" onClick={() => setShowModal(false)}></button>
                             </div>
@@ -2295,143 +2725,11 @@ function App() {
             )}
 
             <style>{`
-                /* Apple-Inspired Global Styles */
-                * {
-                    -webkit-font-smoothing: antialiased;
-                    -moz-osx-font-smoothing: grayscale;
-                }
-                
-                .stat-card {
-                    border-radius: 16px !important;
-                    border: none !important;
-                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                    backdrop-filter: blur(10px);
-                }
-                .stat-card:hover {
-                    transform: translateY(-4px);
-                    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-                }
-                
-                .card {
-                    border-radius: 16px !important;
-                    border: 1px solid rgba(255,215,0,0.08) !important;
-                    backdrop-filter: blur(10px);
-                    background: rgba(255,255,255,0.6);
-                    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-                    transition: all 0.3s ease;
-                }
-                .card:hover {
-                    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-                }
-                
-                .sidebar-tab-btn {
-                    transition: all 0.15s ease;
-                    border-radius: 8px;
-                }
-                .sidebar-tab-btn:hover {
-                    background: rgba(255,215,0,0.08) !important;
-                }
-                .sidebar-tab-btn.active {
-                    background: rgba(255,215,0,0.12) !important;
-                    color: #FF9933 !important;
-                }
-                
-                .sidebar-scroll::-webkit-scrollbar {
-                    width: 4px;
-                }
-                .sidebar-scroll::-webkit-scrollbar-track {
-                    background: transparent;
-                }
-                .sidebar-scroll::-webkit-scrollbar-thumb {
-                    background: rgba(255,215,0,0.3);
-                    border-radius: 4px;
-                }
-                
-                .form-control, .form-select {
-                    border-radius: 12px !important;
-                    border: 1px solid rgba(0,0,0,0.08) !important;
-                    padding: 10px 14px !important;
-                    transition: all 0.2s ease;
-                }
-                .form-control:focus, .form-select:focus {
-                    border-color: #FF9933 !important;
-                    box-shadow: 0 0 0 3px rgba(255,153,51,0.15) !important;
-                }
-                
-                .btn {
-                    border-radius: 12px !important;
-                    padding: 8px 20px !important;
-                    font-weight: 500 !important;
-                    transition: all 0.3s ease;
-                }
-                .btn-primary {
-                    background: linear-gradient(135deg, #FF9933 0%, #FF6B00 100%) !important;
-                    border: none !important;
-                }
-                .btn-primary:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 25px rgba(255,153,51,0.35);
-                }
-                .btn-success {
-                    background: linear-gradient(135deg, #138808 0%, #00A859 100%) !important;
-                    border: none !important;
-                }
-                .btn-success:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 25px rgba(19,136,8,0.35);
-                }
-                
-                .badge {
-                    border-radius: 20px !important;
-                    padding: 4px 12px !important;
-                    font-weight: 500 !important;
-                }
-                
-                .table {
-                    border-radius: 12px !important;
-                    overflow: hidden;
-                }
-                .table thead th {
-                    background: rgba(255,215,0,0.06) !important;
-                    border-bottom: 2px solid rgba(255,215,0,0.15) !important;
-                }
-                
-                .alert {
-                    border-radius: 12px !important;
-                    border: none !important;
-                }
-                
-                .bg-primary { background: linear-gradient(135deg, #FF9933, #FF6B00) !important; }
-                .bg-success { background: linear-gradient(135deg, #138808, #00A859) !important; }
-                .bg-info { background: linear-gradient(135deg, #2196F3, #1976D2) !important; }
-                .bg-warning { background: linear-gradient(135deg, #FFC107, #FFA000) !important; }
-                .bg-danger { background: linear-gradient(135deg, #FF1744, #D50000) !important; }
-                .bg-secondary { background: linear-gradient(135deg, #78909C, #546E7A) !important; }
-                .bg-dark { background: linear-gradient(135deg, #263238, #1a1a2e) !important; }
-                
-                .text-warning { color: #FF9933 !important; }
-                .text-primary { color: #FF6B00 !important; }
-                .text-success { color: #138808 !important; }
-                
-                .modal-content {
-                    border-radius: 20px !important;
-                    border: none !important;
-                    backdrop-filter: blur(20px);
-                    background: rgba(255,255,255,0.95);
-                }
-                
-                @media (max-width: 768px) {
-                    .sidebar-container {
-                        width: 60px !important;
-                    }
-                    .sidebar-container.open {
-                        width: 240px !important;
-                    }
-                    main {
-                        margin-left: 60px !important;
-                        padding: 10px !important;
-                    }
-                }
+                .width-220 { width: 220px; }
+                .width-60 { width: 60px; }
+                .hover-bg-primary-20:hover { background-color: rgba(13, 110, 253, 0.2); }
+                .transition-all { transition: all 0.3s ease-in-out; }
+                .btn:focus { box-shadow: none; }
             `}</style>
         </div>
     );
